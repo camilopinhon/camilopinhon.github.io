@@ -406,7 +406,7 @@
 
     if (!homeImage) {
       if (!state.homeLoaded) {
-        homePreview.innerHTML = "<p>Cargando fotos de HOME...</p>";
+        homePreview.innerHTML = "<p></p>";
         return;
       }
       homePreview.innerHTML = isFileProtocol
@@ -434,7 +434,7 @@
 
     if (!state.loadedProjects.has(project.id)) {
       projectFrame.className = `frame frame-${project.defaultFrame || "center"}`;
-      projectFrame.innerHTML = "<p>Cargando fotos del proyecto...</p>";
+      projectFrame.innerHTML = "<p></p>";
       allGrid.innerHTML = "";
       await ensureProjectPhotosLoaded(project);
       if (state.selectedProject?.id === project.id) {

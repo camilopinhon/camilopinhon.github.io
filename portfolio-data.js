@@ -1,10 +1,10 @@
 window.PORTFOLIO_DATA = {
-  siteTitle: ["CAMILO PINON", "BLANCO"],
+  siteTitle: ["CAMILO", "PIÑÓN"],
   instagramUrl: "https://www.instagram.com/camilopinhon/",
   contact: {
-    name: "Camilo Pinon Blanco",
+    name: "Camilo Piñón Blanco",
     email: "camipi2010@gmail.com",
-    location: "A Coruna / Vigo"
+    location: "A Coruña / Vigo"
   },
   github: { repo: "camilopinhon/camilopinhon.github.io", branch: "main" },
   home: {

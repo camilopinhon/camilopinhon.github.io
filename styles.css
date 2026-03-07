@@ -6,6 +6,22 @@
   --sidebar-w: 260px;
 }
 
+@font-face {
+  font-family: "Andale Mono";
+  src: url("./fonts/Andale Mono.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cmunvt";
+  src: url("./fonts/cmunvt.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -15,7 +31,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Archivo", sans-serif;
+  font-family: "Andale Mono", monospace;
 }
 
 .page {
@@ -38,12 +54,15 @@ body {
 .brand {
   color: var(--text);
   text-decoration: none;
-  font-size: 46px;
+  font-size: 36px;
   line-height: 0.85;
   font-weight: 700;
   letter-spacing: 0.02em;
   display: inline-flex;
   flex-direction: column;
+  gap: 10px;
+  font-family: "Cmunvt", serif;
+  word-spacing: 0.2em;
 }
 
 .project-nav,
@@ -205,12 +224,41 @@ body {
   font-size: 18px;
 }
 
+#contact-view .contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+#contact-view .contact-photo img {
+  width: 260px;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+#contact-view .contact-details {
+  flex: 1;
+  min-width: 240px;
+}
+
 #contact-view p {
   margin: 6px 0;
 }
 
+#contact-name {
+  font-family: "Cmunvt", serif;
+}
+
 #contact-email {
   color: var(--text);
+  font-family: "Cmunvt", serif;
+}
+
+#contact-location {
+  font-family: "Cmunvt", serif;
 }
 
 .sr-only {

@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio Fotografico</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -56,9 +50,22 @@
 
         <section id="contact-view" class="view" aria-labelledby="contact-title">
           <h2 id="contact-title">CONTACT</h2>
-          <p id="contact-name"></p>
-          <p><a id="contact-email" href="#"></a></p>
-          <p id="contact-location"></p>
+          <div class="contact-card">
+            <div class="contact-photo">
+              <img
+                src="images/contact/profile.jpg"
+                alt="Retrato de Camilo Piñón Blanco"
+                loading="lazy"
+                width="400"
+                height="400"
+              />
+            </div>
+            <div class="contact-details">
+              <p id="contact-name"></p>
+              <p><a id="contact-email" href="#"></a></p>
+              <p id="contact-location"></p>
+            </div>
+          </div>
         </section>
       </main>
     </div>

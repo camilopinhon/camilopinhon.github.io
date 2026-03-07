@@ -19,13 +19,50 @@ cleanup() {
 }
 trap cleanup EXIT
 
+files=()
+
+if (( $# > 0 )); then
+  files=("$@")
+else
+  while IFS= read -r -d '' file; do
+    files+=("$file")
+  done < <(find images -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) -print0)
+fi
+
+if (( ${#files[@]} == 0 )); then
+  echo "No se encontraron JPGs en images/."
+  exit 0
+fi
+
 total_before=0
 total_after=0
 processed=0
 skipped=0
 
-while IFS= read -r -d '' file; do
-  rel_path="${file#./}"
+for file in "${files[@]}"; do
+  [[ -z "$file" ]] && continue
+  if [[ ! -f "$file" ]]; then
+    echo "Aviso: '$file' no existe, se omite." >&2
+    ((skipped++))
+    continue
+  fi
+
+  lower_path="$(printf '%s' "$file" | tr '[:upper:]' '[:lower:]')"
+  case "$lower_path" in
+    *.jpg|*.jpeg) ;;
+    *)
+      ((skipped++))
+      continue
+      ;;
+  esac
+
+  rel_path="$file"
+  if [[ "$file" == ./* ]]; then
+    rel_path="${file#./}"
+  elif [[ "$file" == "$ROOT_DIR/"* ]]; then
+    rel_path="${file#$ROOT_DIR/}"
+  fi
+
   ((processed++))
 
   size_before=$(stat -f%z "$file")
@@ -52,10 +89,10 @@ while IFS= read -r -d '' file; do
     total_after=$((total_after + size_before))
     ((skipped++))
   fi
-done < <(find images -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) -print0)
+done
 
 if (( processed == 0 )); then
-  echo "No se encontraron JPGs en images/."
+  echo "No se procesaron JPGs."
   exit 0
 fi
 

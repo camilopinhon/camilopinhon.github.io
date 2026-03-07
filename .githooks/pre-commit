@@ -5,9 +5,21 @@ set -euo pipefail
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 cd "$REPO_ROOT"
 
-echo "[pre-commit] Comprimiendo imagenes..."
-scripts/compress-images.sh
+new_images=()
+while IFS= read -r -d '' rel_path; do
+  [[ -z "$rel_path" ]] && continue
+  lower="$(printf '%s' "$rel_path" | tr '[:upper:]' '[:lower:]')"
+  case "$lower" in
+    *.jpg|*.jpeg)
+      new_images+=("$rel_path")
+      ;;
+  esac
+done < <(git diff --cached --name-only -z --diff-filter=A -- 'images/**/*' || true)
 
-if ! git diff --quiet -- images; then
-  git add images
+if (( ${#new_images[@]} == 0 )); then
+  exit 0
 fi
+
+echo "[pre-commit] Comprimiendo ${#new_images[@]} imagen(es) nueva(s)..."
+scripts/compress-images.sh "${new_images[@]}"
+git add "${new_images[@]}"

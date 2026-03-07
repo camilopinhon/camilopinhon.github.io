@@ -50,10 +50,16 @@ Opcionalmente, si quieres forzar una foto concreta, puedes seguir usando `photos
 
 ## Automatizar la compresion de imagenes
 
-El repositorio incluye un hook de Git (`.githooks/pre-commit`) que ejecuta `scripts/compress-images.sh` antes de cada commit para asegurar que todas las imagenes JPG se redimensionan a 1600px y calidad 60. Activalo una vez en tu copia local:
+El hook `.githooks/pre-commit` comprime **solo las imagenes JPG nuevas** detectadas en el `git add` del commit (mismas que no existian en el repo), manteniendo el resto intactas. Activalo una vez:
 
 ```bash
 git config core.hooksPath .githooks
+```
+
+Si en algun momento quieres volver a optimizar todas las imagenes, ejecuta manualmente:
+
+```bash
+scripts/compress-images.sh
 ```
 
 Requisitos:

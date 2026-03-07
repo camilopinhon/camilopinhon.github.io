@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Fotografico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <aside class="sidebar">
+        <a class="brand" href="#" data-action="home">
+          <span>TU NOMBRE</span>
+          <span>FOTO</span>
+        </a>
+
+        <nav id="project-nav" class="project-nav" aria-label="Proyectos"></nav>
+
+        <div class="secondary-nav">
+          <button class="menu-link" data-action="home">HOME</button>
+          <button class="menu-link" data-action="contact">CONTACT</button>
+          <a id="instagram-link" class="menu-link" href="#" target="_blank" rel="noreferrer">INSTAGRAM</a>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section id="home-view" class="view is-active" aria-labelledby="home-title">
+          <h1 id="home-title" class="sr-only">Home</h1>
+          <div class="home-intro">
+            <p class="home-kicker">PORTFOLIO</p>
+            <p class="home-text"></p>
+          </div>
+          <div id="home-preview" class="frame frame-center"></div>
+        </section>
+
+        <section id="project-view" class="view" aria-labelledby="project-title">
+          <h2 id="project-title" class="project-title"></h2>
+
+          <div id="project-frame" class="frame frame-center"></div>
+
+          <div class="controls">
+            <button id="prev-btn" class="control-btn" type="button">PREV</button>
+            <span class="separator">|</span>
+            <button id="next-btn" class="control-btn" type="button">NEXT</button>
+            <button id="all-btn" class="control-btn" type="button">ALL</button>
+          </div>
+
+          <div id="all-grid" class="all-grid" hidden></div>
+        </section>
+
+        <section id="contact-view" class="view" aria-labelledby="contact-title">
+          <h2 id="contact-title">CONTACT</h2>
+          <p id="contact-name"></p>
+          <p><a id="contact-email" href="#"></a></p>
+          <p id="contact-location"></p>
+        </section>
+      </main>
+    </div>
+
+    <script src="portfolio-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

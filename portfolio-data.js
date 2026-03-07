@@ -6,10 +6,7 @@ window.PORTFOLIO_DATA = {
     email: "camipi2010@gmail.com",
     location: "A Coruna / Vigo"
   },
-  github: {
-    repo: "camilopinonblanco/portfolio-website",
-    branch: "main"
-  },
+  github: { repo: "camilopinhon/camilopinhon.github.io", branch: "main" },
   home: {
     imageFolder: "home"
   },

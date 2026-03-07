@@ -416,7 +416,7 @@
     }
 
     const img = document.createElement("img");
-    img.src = resolvePhotoSrc(homeProject, homeImage);
+    setImageSource(img, homeProject, homeImage);
     img.alt = homeImage.alt || "Home";
     img.loading = "eager";
     homePreview.appendChild(img);
@@ -462,7 +462,7 @@
     projectFrame.innerHTML = "";
 
     const img = document.createElement("img");
-    img.src = resolvePhotoSrc(project, currentPhoto);
+    setImageSource(img, project, currentPhoto);
     img.alt = currentPhoto.alt || project.title;
     img.loading = "eager";
     projectFrame.appendChild(img);
@@ -483,7 +483,7 @@
       fig.className = `grid-card ${photo.grid || ""}`.trim();
 
       const img = document.createElement("img");
-      img.src = resolvePhotoSrc(state.selectedProject, photo);
+      setImageSource(img, state.selectedProject, photo);
       img.alt = photo.alt || `Photo ${index + 1}`;
       img.loading = "lazy";
       img.addEventListener("click", () => {
@@ -611,6 +611,60 @@
 
     const fileName = photo?.file || "";
     const folder = project?.imageFolder || project?.id || "";
-    return `images/${folder}/${fileName}`;
+    return `images/${folder}/${encodePathSegment(fileName)}`;
+  }
+
+  function setImageSource(img, project, photo) {
+    const candidates = buildPhotoCandidates(project, photo);
+    if (!candidates.length) {
+      img.removeAttribute("src");
+      return;
+    }
+
+    let index = 0;
+    img.onerror = () => {
+      index += 1;
+      if (index < candidates.length) {
+        img.src = candidates[index];
+        return;
+      }
+      img.onerror = null;
+    };
+    img.src = candidates[index];
+  }
+
+  function buildPhotoCandidates(project, photo) {
+    if (photo?.src) {
+      return [photo.src];
+    }
+
+    const fileName = photo?.file || "";
+    const folder = project?.imageFolder || project?.id || "";
+    if (!fileName || !folder) {
+      return [];
+    }
+
+    const encodedFile = encodePathSegment(fileName);
+    const encodedFolder = encodePathSegment(folder);
+    const localEncoded = `images/${encodedFolder}/${encodedFile}`;
+    const localRaw = `images/${folder}/${fileName}`;
+
+    const candidates = [localEncoded];
+    if (localRaw !== localEncoded) {
+      candidates.push(localRaw);
+    }
+
+    const repoInfo = resolveGitHubRepoInfo();
+    if (repoInfo) {
+      candidates.push(
+        `https://raw.githubusercontent.com/${repoInfo.owner}/${repoInfo.repo}/${repoInfo.branch}/images/${encodedFolder}/${encodedFile}`
+      );
+    }
+
+    return [...new Set(candidates)];
+  }
+
+  function encodePathSegment(value) {
+    return encodeURIComponent(value).replace(/%2F/g, "/");
   }
 })();

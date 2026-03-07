@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+echo "[pre-commit] Comprimiendo imagenes..."
+scripts/compress-images.sh
+
+if ! git diff --quiet -- images; then
+  git add images
+fi

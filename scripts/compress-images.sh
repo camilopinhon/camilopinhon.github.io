@@ -5,8 +5,8 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
-MAX_DIMENSION="${MAX_DIMENSION:-3000}"
-JPEG_QUALITY="${JPEG_QUALITY:-80}"
+MAX_DIMENSION="${MAX_DIMENSION:-1600}"
+JPEG_QUALITY="${JPEG_QUALITY:-60}"
 
 if ! command -v sips >/dev/null 2>&1; then
   echo "Error: el comando 'sips' no esta disponible en este sistema." >&2

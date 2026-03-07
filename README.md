@@ -13,7 +13,7 @@ Todo se edita en `portfolio-data.js`.
 
 ## Como anadir fotos (automatico)
 
-1. Copia tus fotos dentro de la carpeta del proyecto en `images/`:
+1. Copiar tus fotos dentro de la carpeta del proyecto en `images/`:
    - `images/blackbird/`
    - `images/people-are-strange/`
    - `images/us-and-them/`
@@ -47,3 +47,16 @@ Opcionalmente, si quieres forzar una foto concreta, puedes seguir usando `photos
 2. En GitHub: `Settings > Pages`.
 3. Fuente: branch `main` (root).
 4. Tu portfolio quedara publicado en tu `*.github.io`.
+
+## Automatizar la compresion de imagenes
+
+El repositorio incluye un hook de Git (`.githooks/pre-commit`) que ejecuta `scripts/compress-images.sh` antes de cada commit para asegurar que todas las imagenes JPG se redimensionan a 1600px y calidad 60. Activalo una vez en tu copia local:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+Requisitos:
+
+- macOS (usa `sips` para comprimir).
+- Permisos de ejecucion (`chmod +x .githooks/pre-commit` ya esta aplicado en el repo, pero verifica tras clonar).

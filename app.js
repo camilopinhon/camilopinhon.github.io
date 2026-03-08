@@ -39,7 +39,9 @@
     homeLoaded: false,
     projectLoadPromises: new Map(),
     loadedProjects: new Set(),
-    imageManifest: null
+    imageManifest: null,
+    githubImageIndex: null,
+    githubImageIndexPromise: null
   };
 
   setupStaticFields();
@@ -491,32 +493,76 @@
       return [];
     }
 
-    const endpoint =
-      `https://api.github.com/repos/${repoInfo.owner}/${repoInfo.repo}` +
-      `/contents/images/${encodeURIComponent(folder)}?ref=${encodeURIComponent(repoInfo.branch)}`;
-
     try {
-      const response = await fetch(endpoint, {
-        headers: { Accept: "application/vnd.github+json" }
-      });
-      if (!response.ok) {
-        return [];
-      }
-
-      const entries = await response.json();
-      if (!Array.isArray(entries)) {
-        return [];
-      }
-
-      const files = entries
-        .filter((entry) => entry?.type === "file")
-        .map((entry) => entry?.name || "")
-        .filter((name) => IMAGE_EXT_REGEX.test(name));
-
+      const imageIndex = await getGitHubImageIndex(repoInfo);
+      const files = imageIndex.get(folder) || [];
       return sortFilesNaturally(files);
     } catch (_error) {
       return [];
     }
+  }
+
+  async function getGitHubImageIndex(repoInfo) {
+    if (state.githubImageIndex) {
+      return state.githubImageIndex;
+    }
+
+    if (state.githubImageIndexPromise) {
+      return state.githubImageIndexPromise;
+    }
+
+    const endpoint =
+      `https://api.github.com/repos/${repoInfo.owner}/${repoInfo.repo}` +
+      `/git/trees/${encodeURIComponent(repoInfo.branch)}?recursive=1`;
+
+    state.githubImageIndexPromise = fetch(endpoint, {
+      headers: { Accept: "application/vnd.github+json" }
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`GitHub tree API ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((payload) => {
+        const tree = Array.isArray(payload?.tree) ? payload.tree : [];
+        const index = new Map();
+
+        tree.forEach((entry) => {
+          if (entry?.type !== "blob" || typeof entry.path !== "string") {
+            return;
+          }
+          if (!entry.path.startsWith("images/")) {
+            return;
+          }
+          if (!IMAGE_EXT_REGEX.test(entry.path)) {
+            return;
+          }
+
+          const pathParts = entry.path.split("/");
+          if (pathParts.length < 3) {
+            return;
+          }
+          const folder = pathParts[1];
+          const file = pathParts.slice(2).join("/");
+          if (!folder || !file) {
+            return;
+          }
+
+          if (!index.has(folder)) {
+            index.set(folder, []);
+          }
+          index.get(folder).push(file);
+        });
+
+        state.githubImageIndex = index;
+        return index;
+      })
+      .finally(() => {
+        state.githubImageIndexPromise = null;
+      });
+
+    return state.githubImageIndexPromise;
   }
 
   function resolveGitHubRepoInfo() {
@@ -564,8 +610,8 @@
 
     const img = document.createElement("img");
     applyResponsiveSources(img, homeProject, homeImage, {
-      variant: "main",
-      sizes: MAIN_IMAGE_SIZES
+      variant: "thumb",
+      sizes: "(max-width: 920px) 100vw, 640px"
     });
     img.alt = homeImage.alt || "Home";
     if (homeImage.width) {
@@ -646,26 +692,48 @@
       return;
     }
 
-    photos.forEach((photo, index) => {
-      const fig = document.createElement("figure");
-      fig.className = `grid-card ${photo.grid || ""}`.trim();
+    const BATCH_SIZE = 18;
+    let offset = 0;
 
-      const img = document.createElement("img");
-      applyResponsiveSources(img, state.selectedProject, photo, {
-        variant: "thumb",
-        sizes: getGridSizes(photo)
-      });
-      img.alt = photo.alt || `Photo ${index + 1}`;
-      setImagePerformanceAttributes(img, { loading: "lazy" });
-      img.addEventListener("click", () => {
-        state.selectedPhotoIndex = index;
-        state.allMode = false;
-        renderProject();
-      });
+    const renderBatch = () => {
+      if (!state.allMode) {
+        return;
+      }
 
-      fig.appendChild(img);
-      allGrid.appendChild(fig);
-    });
+      const fragment = document.createDocumentFragment();
+      const limit = Math.min(offset + BATCH_SIZE, photos.length);
+
+      for (let index = offset; index < limit; index += 1) {
+        const photo = photos[index];
+        const fig = document.createElement("figure");
+        fig.className = `grid-card ${photo.grid || ""}`.trim();
+
+        const img = document.createElement("img");
+        applyResponsiveSources(img, state.selectedProject, photo, {
+          variant: "thumb",
+          sizes: getGridSizes(photo)
+        });
+        img.alt = photo.alt || `Photo ${index + 1}`;
+        setImagePerformanceAttributes(img, { loading: "lazy" });
+        img.addEventListener("click", () => {
+          state.selectedPhotoIndex = index;
+          state.allMode = false;
+          renderProject();
+        });
+
+        fig.appendChild(img);
+        fragment.appendChild(fig);
+      }
+
+      allGrid.appendChild(fragment);
+      offset = limit;
+
+      if (offset < photos.length) {
+        requestAnimationFrame(renderBatch);
+      }
+    };
+
+    requestAnimationFrame(renderBatch);
   }
 
   function showView(viewName) {

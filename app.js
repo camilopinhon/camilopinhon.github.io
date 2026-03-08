@@ -145,7 +145,9 @@
       img.removeAttribute("srcset");
       img.removeAttribute("sizes");
     }
-    setImageSource(img, project, photo, options.variant);
+    setImageSource(img, project, photo, options.variant, {
+      clearSrcSetOnError: options.clearSrcSetOnError !== false
+    });
   }
 
   function buildSrcSet(project, photo, variant = "main") {
@@ -744,9 +746,8 @@
         const img = document.createElement("img");
         img.classList.add("grid-img-pending");
         img.__lazyLoad = () => {
-          applyResponsiveSources(img, state.selectedProject, photo, {
-            variant: "thumb",
-            sizes: getGridSizes(photo)
+          setImageSource(img, state.selectedProject, photo, "thumb", {
+            clearSrcSetOnError: true
           });
           img.classList.remove("grid-img-pending");
           img.__lazyLoad = null;
@@ -896,17 +897,22 @@
     return `images/${folder}/${encodePathSegment(fileName)}`;
   }
 
-  function setImageSource(img, project, photo, variant = "main") {
+  function setImageSource(img, project, photo, variant = "main", options = {}) {
     const candidates = buildPhotoCandidates(project, photo, { variant });
     if (!candidates.length) {
       img.removeAttribute("src");
       return;
     }
 
+    const shouldClearSrcSetOnError = options.clearSrcSetOnError !== false;
     let index = 0;
     img.onerror = () => {
       index += 1;
       if (index < candidates.length) {
+        if (shouldClearSrcSetOnError) {
+          img.removeAttribute("srcset");
+          img.removeAttribute("sizes");
+        }
         img.src = candidates[index].src;
         return;
       }

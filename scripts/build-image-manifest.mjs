@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, "..");
 const IMAGES_DIR = path.join(ROOT_DIR, "images");
-const DERIVED_DIR = path.join(IMAGES_DIR, ".derived");
+const DERIVED_DIR = path.join(IMAGES_DIR, "derived");
 
 const MAIN_WIDTHS = [480, 960, 1600];
 const THUMB_WIDTH = 640;
@@ -37,7 +37,7 @@ function ensureDir(dirPath) {
 }
 
 function shouldSkipEntry(name) {
-  return name.startsWith(".") || name === "contact" || name === ".derived";
+  return name.startsWith(".") || name === "contact" || name === "derived";
 }
 
 function listProjectFolders() {

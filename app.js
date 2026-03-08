@@ -48,6 +48,7 @@
   setupStaticFields();
   renderProjectMenu();
   bindGlobalActions();
+  bindTouchGestures();
   showView("home");
   renderHomePreview();
 
@@ -358,6 +359,79 @@
       const midpoint = rect.left + rect.width / 2;
       rotateHome(event.clientX < midpoint ? -1 : 1);
     });
+  }
+
+  function bindTouchGestures() {
+    bindSwipeNavigation(projectFrame, {
+      isEnabled: () => projectView.classList.contains("is-active"),
+      onPrev: () => {
+        goPrev();
+      },
+      onNext: () => {
+        goNext();
+      }
+    });
+
+    bindSwipeNavigation(homePreview, {
+      isEnabled: () => homeView.classList.contains("is-active") && state.homePhotos.length > 1,
+      onPrev: () => {
+        rotateHome(-1);
+      },
+      onNext: () => {
+        rotateHome(1);
+      }
+    });
+  }
+
+  function bindSwipeNavigation(container, handlers) {
+    if (!container) {
+      return;
+    }
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    container.addEventListener(
+      "touchstart",
+      (event) => {
+        if (!handlers.isEnabled() || event.touches.length !== 1) {
+          return;
+        }
+
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+      },
+      { passive: true }
+    );
+
+    container.addEventListener(
+      "touchend",
+      (event) => {
+        if (!handlers.isEnabled() || !touchStartX || !touchStartY || event.changedTouches.length !== 1) {
+          touchStartX = 0;
+          touchStartY = 0;
+          return;
+        }
+
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+
+        touchStartX = 0;
+        touchStartY = 0;
+
+        if (Math.abs(deltaX) < 44 || Math.abs(deltaY) > 72 || Math.abs(deltaX) < Math.abs(deltaY)) {
+          return;
+        }
+
+        if (deltaX > 0) {
+          handlers.onPrev();
+        } else {
+          handlers.onNext();
+        }
+      },
+      { passive: true }
+    );
   }
 
   async function ensureProjectPhotosLoaded(project) {

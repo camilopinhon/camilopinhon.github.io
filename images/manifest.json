@@ -1,0 +1,2848 @@
+{
+  "generatedAt": "2026-03-08T10:13:03.172Z",
+  "variants": {
+    "main": [
+      480,
+      960,
+      1600
+    ],
+    "thumb": 640
+  },
+  "projects": {
+    "blackbird": [
+      {
+        "file": "_NZF5482.jpg",
+        "width": 1800,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF5482-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF5482-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF5482-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF5482-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF5899.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF5899-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF5899-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF5899-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF5899-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF7261.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF7261-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF7261-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF7261-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF7261-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8032.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8032-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8032-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8032-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8032-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8033.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8033-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8033-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8033-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8033-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8046.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8046-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8046-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8046-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8046-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8061.jpg",
+        "width": 2057,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8061-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8061-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8061-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8061-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8170.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8170-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8170-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8170-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8170-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8191.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8191-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8191-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8191-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8191-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8195.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8195-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8195-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8195-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8195-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8216.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8216-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8216-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8216-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8216-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8266.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8266-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8266-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8266-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8266-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF8289.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/_NZF8289-480.jpg",
+            "960": "images/.derived/main/blackbird/_NZF8289-960.jpg",
+            "1600": "images/.derived/main/blackbird/_NZF8289-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/_NZF8289-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0075.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF0075-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF0075-960.jpg",
+            "1600": "images/.derived/main/blackbird/DSCF0075-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF0075-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0187.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF0187-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF0187-960.jpg",
+            "1600": "images/.derived/main/blackbird/DSCF0187-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF0187-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0229.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF0229-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF0229-960.jpg",
+            "1600": "images/.derived/main/blackbird/DSCF0229-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF0229-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1103-2.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF1103-2-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF1103-2-960.jpg",
+            "1600": "images/.derived/main/blackbird/DSCF1103-2-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF1103-2-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1143.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF1143-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF1143-960.jpg",
+            "1600": "images/.derived/main/blackbird/DSCF1143-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF1143-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6093.jpg",
+        "width": 1143,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF6093-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF6093-960.jpg",
+            "1600": "images/blackbird/DSCF6093.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF6093-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6096.jpg",
+        "width": 1142,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF6096-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF6096-960.jpg",
+            "1600": "images/blackbird/DSCF6096.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF6096-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6169.jpg",
+        "width": 1600,
+        "height": 1371,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF6169-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF6169-960.jpg",
+            "1600": "images/blackbird/DSCF6169.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF6169-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6178.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF6178-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF6178-960.jpg",
+            "1600": "images/blackbird/DSCF6178.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF6178-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6212.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF6212-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF6212-960.jpg",
+            "1600": "images/blackbird/DSCF6212.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF6212-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF9882.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF9882-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF9882-960.jpg",
+            "1600": "images/.derived/main/blackbird/DSCF9882-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF9882-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF9973.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/DSCF9973-480.jpg",
+            "960": "images/.derived/main/blackbird/DSCF9973-960.jpg",
+            "1600": "images/.derived/main/blackbird/DSCF9973-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/DSCF9973-640.jpg"
+        }
+      },
+      {
+        "file": "img002.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/img002-480.jpg",
+            "960": "images/.derived/main/blackbird/img002-960.jpg",
+            "1600": "images/.derived/main/blackbird/img002-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/img002-640.jpg"
+        }
+      },
+      {
+        "file": "scan024-instagram.jpg",
+        "width": 2400,
+        "height": 1494,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/blackbird/scan024-instagram-480.jpg",
+            "960": "images/.derived/main/blackbird/scan024-instagram-960.jpg",
+            "1600": "images/.derived/main/blackbird/scan024-instagram-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/blackbird/scan024-instagram-640.jpg"
+        }
+      }
+    ],
+    "home": [
+      {
+        "file": "_NZF5482.jpg",
+        "width": 1800,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/home/_NZF5482-480.jpg",
+            "960": "images/.derived/main/home/_NZF5482-960.jpg",
+            "1600": "images/.derived/main/home/_NZF5482-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/home/_NZF5482-640.jpg"
+        }
+      }
+    ],
+    "like-a-rolling-stone": [
+      {
+        "file": "1.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/1-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/1-960.jpg",
+            "1600": "images/like-a-rolling-stone/1.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/1-640.jpg"
+        }
+      },
+      {
+        "file": "2.jpg",
+        "width": 1067,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/2-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/2-960.jpg",
+            "1600": "images/like-a-rolling-stone/2.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/2-640.jpg"
+        }
+      },
+      {
+        "file": "3.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/3-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/3-960.jpg",
+            "1600": "images/like-a-rolling-stone/3.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/3-640.jpg"
+        }
+      },
+      {
+        "file": "4.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/4-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/4-960.jpg",
+            "1600": "images/like-a-rolling-stone/4.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/4-640.jpg"
+        }
+      },
+      {
+        "file": "5.jpg",
+        "width": 1600,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/5-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/5-960.jpg",
+            "1600": "images/like-a-rolling-stone/5.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/5-640.jpg"
+        }
+      },
+      {
+        "file": "6.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/6-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/6-960.jpg",
+            "1600": "images/like-a-rolling-stone/6.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/6-640.jpg"
+        }
+      },
+      {
+        "file": "7.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/7-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/7-960.jpg",
+            "1600": "images/like-a-rolling-stone/7.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/7-640.jpg"
+        }
+      },
+      {
+        "file": "8.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/8-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/8-960.jpg",
+            "1600": "images/like-a-rolling-stone/8.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/8-640.jpg"
+        }
+      },
+      {
+        "file": "9.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/9-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/9-960.jpg",
+            "1600": "images/like-a-rolling-stone/9.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/9-640.jpg"
+        }
+      },
+      {
+        "file": "10.jpg",
+        "width": 1600,
+        "height": 590,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/10-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/10-960.jpg",
+            "1600": "images/like-a-rolling-stone/10.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/10-640.jpg"
+        }
+      },
+      {
+        "file": "12.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/12-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/12-960.jpg",
+            "1600": "images/like-a-rolling-stone/12.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/12-640.jpg"
+        }
+      },
+      {
+        "file": "13.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/13-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/13-960.jpg",
+            "1600": "images/like-a-rolling-stone/13.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/13-640.jpg"
+        }
+      },
+      {
+        "file": "14.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/14-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/14-960.jpg",
+            "1600": "images/like-a-rolling-stone/14.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/14-640.jpg"
+        }
+      },
+      {
+        "file": "15.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/15-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/15-960.jpg",
+            "1600": "images/like-a-rolling-stone/15.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/15-640.jpg"
+        }
+      },
+      {
+        "file": "16.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/16-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/16-960.jpg",
+            "1600": "images/like-a-rolling-stone/16.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/16-640.jpg"
+        }
+      },
+      {
+        "file": "17.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/17-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/17-960.jpg",
+            "1600": "images/like-a-rolling-stone/17.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/17-640.jpg"
+        }
+      },
+      {
+        "file": "18.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/18-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/18-960.jpg",
+            "1600": "images/like-a-rolling-stone/18.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/18-640.jpg"
+        }
+      },
+      {
+        "file": "19.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/19-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/19-960.jpg",
+            "1600": "images/like-a-rolling-stone/19.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/19-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0844.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF0844-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF0844-960.jpg",
+            "1600": "images/.derived/main/like-a-rolling-stone/DSCF0844-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF0844-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0864.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF0864-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF0864-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF0864.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF0864-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0914.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF0914-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF0914-960.jpg",
+            "1600": "images/.derived/main/like-a-rolling-stone/DSCF0914-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF0914-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1044.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF1044-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF1044-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF1044.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF1044-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1047.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF1047-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF1047-960.jpg",
+            "1600": "images/.derived/main/like-a-rolling-stone/DSCF1047-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF1047-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1190.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF1190-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF1190-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF1190.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF1190-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1894.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF1894-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF1894-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF1894.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF1894-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1990.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF1990-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF1990-960.jpg",
+            "1600": "images/.derived/main/like-a-rolling-stone/DSCF1990-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF1990-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF2013.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF2013-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF2013-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF2013.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF2013-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF2052.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF2052-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF2052-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF2052.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF2052-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4843.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF4843-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF4843-960.jpg",
+            "1600": "images/.derived/main/like-a-rolling-stone/DSCF4843-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF4843-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF5244.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF5244-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF5244-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF5244.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF5244-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF5266.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF5266-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF5266-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF5266.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF5266-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF5426.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF5426-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF5426-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF5426.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF5426-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF5522.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF5522-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF5522-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF5522.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF5522-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF5546.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF5546-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF5546-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF5546.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF5546-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF5547.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF5547-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF5547-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF5547.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF5547-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF5551.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF5551-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF5551-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF5551.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF5551-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF5737.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF5737-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF5737-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF5737.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF5737-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6075.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF6075-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF6075-960.jpg",
+            "1600": "images/.derived/main/like-a-rolling-stone/DSCF6075-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF6075-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6082.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF6082-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF6082-960.jpg",
+            "1600": "images/.derived/main/like-a-rolling-stone/DSCF6082-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF6082-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6090.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF6090-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF6090-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF6090.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF6090-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6243.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF6243-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF6243-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF6243.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF6243-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6663.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF6663-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF6663-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF6663.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF6663-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6931.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF6931-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF6931-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF6931.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF6931-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7008.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF7008-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF7008-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF7008.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF7008-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7866.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF7866-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF7866-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF7866.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF7866-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7878.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF7878-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF7878-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF7878.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF7878-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7897.jpg",
+        "width": 1600,
+        "height": 590,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/DSCF7897-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/DSCF7897-960.jpg",
+            "1600": "images/like-a-rolling-stone/DSCF7897.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/DSCF7897-640.jpg"
+        }
+      },
+      {
+        "file": "GR004339.jpg",
+        "width": 1142,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/GR004339-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/GR004339-960.jpg",
+            "1600": "images/like-a-rolling-stone/GR004339.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/GR004339-640.jpg"
+        }
+      },
+      {
+        "file": "scan005-Editar.jpg",
+        "width": 2400,
+        "height": 1560,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/scan005-Editar-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/scan005-Editar-960.jpg",
+            "1600": "images/.derived/main/like-a-rolling-stone/scan005-Editar-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/scan005-Editar-640.jpg"
+        }
+      },
+      {
+        "file": "scan016-Editar.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/scan016-Editar-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/scan016-Editar-960.jpg",
+            "1600": "images/.derived/main/like-a-rolling-stone/scan016-Editar-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/scan016-Editar-640.jpg"
+        }
+      },
+      {
+        "file": "scan017-Editar.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/like-a-rolling-stone/scan017-Editar-480.jpg",
+            "960": "images/.derived/main/like-a-rolling-stone/scan017-Editar-960.jpg",
+            "1600": "images/like-a-rolling-stone/scan017-Editar.jpg"
+          },
+          "thumb": "images/.derived/thumb/like-a-rolling-stone/scan017-Editar-640.jpg"
+        }
+      }
+    ],
+    "people-are-strange": [
+      {
+        "file": "_NZF1077-Editar-Editar.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/_NZF1077-Editar-Editar-480.jpg",
+            "960": "images/.derived/main/people-are-strange/_NZF1077-Editar-Editar-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/_NZF1077-Editar-Editar-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/_NZF1077-Editar-Editar-640.jpg"
+        }
+      },
+      {
+        "file": "0.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/0-480.jpg",
+            "960": "images/.derived/main/people-are-strange/0-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/0-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/0-640.jpg"
+        }
+      },
+      {
+        "file": "1.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/1-480.jpg",
+            "960": "images/.derived/main/people-are-strange/1-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/1-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/1-640.jpg"
+        }
+      },
+      {
+        "file": "2.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/2-480.jpg",
+            "960": "images/.derived/main/people-are-strange/2-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/2-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/2-640.jpg"
+        }
+      },
+      {
+        "file": "3.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/3-480.jpg",
+            "960": "images/.derived/main/people-are-strange/3-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/3-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/3-640.jpg"
+        }
+      },
+      {
+        "file": "4.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/4-480.jpg",
+            "960": "images/.derived/main/people-are-strange/4-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/4-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/4-640.jpg"
+        }
+      },
+      {
+        "file": "5.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/5-480.jpg",
+            "960": "images/.derived/main/people-are-strange/5-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/5-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/5-640.jpg"
+        }
+      },
+      {
+        "file": "6.jpg",
+        "width": 2400,
+        "height": 1349,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/6-480.jpg",
+            "960": "images/.derived/main/people-are-strange/6-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/6-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/6-640.jpg"
+        }
+      },
+      {
+        "file": "7.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/7-480.jpg",
+            "960": "images/.derived/main/people-are-strange/7-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/7-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/7-640.jpg"
+        }
+      },
+      {
+        "file": "8.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/8-480.jpg",
+            "960": "images/.derived/main/people-are-strange/8-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/8-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/8-640.jpg"
+        }
+      },
+      {
+        "file": "9.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/9-480.jpg",
+            "960": "images/.derived/main/people-are-strange/9-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/9-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/9-640.jpg"
+        }
+      },
+      {
+        "file": "10.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/10-480.jpg",
+            "960": "images/.derived/main/people-are-strange/10-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/10-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/10-640.jpg"
+        }
+      },
+      {
+        "file": "11.jpg",
+        "width": 2400,
+        "height": 1599,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/11-480.jpg",
+            "960": "images/.derived/main/people-are-strange/11-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/11-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/11-640.jpg"
+        }
+      },
+      {
+        "file": "12.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/12-480.jpg",
+            "960": "images/.derived/main/people-are-strange/12-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/12-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/12-640.jpg"
+        }
+      },
+      {
+        "file": "13.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/13-480.jpg",
+            "960": "images/.derived/main/people-are-strange/13-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/13-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/13-640.jpg"
+        }
+      },
+      {
+        "file": "14.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/14-480.jpg",
+            "960": "images/.derived/main/people-are-strange/14-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/14-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/14-640.jpg"
+        }
+      },
+      {
+        "file": "15.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/15-480.jpg",
+            "960": "images/.derived/main/people-are-strange/15-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/15-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/15-640.jpg"
+        }
+      },
+      {
+        "file": "16.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/16-480.jpg",
+            "960": "images/.derived/main/people-are-strange/16-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/16-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/16-640.jpg"
+        }
+      },
+      {
+        "file": "17.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/17-480.jpg",
+            "960": "images/.derived/main/people-are-strange/17-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/17-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/17-640.jpg"
+        }
+      },
+      {
+        "file": "18.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/18-480.jpg",
+            "960": "images/.derived/main/people-are-strange/18-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/18-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/18-640.jpg"
+        }
+      },
+      {
+        "file": "19.jpg",
+        "width": 2400,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/19-480.jpg",
+            "960": "images/.derived/main/people-are-strange/19-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/19-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/19-640.jpg"
+        }
+      },
+      {
+        "file": "20.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/20-480.jpg",
+            "960": "images/.derived/main/people-are-strange/20-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/20-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/20-640.jpg"
+        }
+      },
+      {
+        "file": "21.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/21-480.jpg",
+            "960": "images/.derived/main/people-are-strange/21-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/21-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/21-640.jpg"
+        }
+      },
+      {
+        "file": "22.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/22-480.jpg",
+            "960": "images/.derived/main/people-are-strange/22-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/22-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/22-640.jpg"
+        }
+      },
+      {
+        "file": "23.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/23-480.jpg",
+            "960": "images/.derived/main/people-are-strange/23-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/23-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/23-640.jpg"
+        }
+      },
+      {
+        "file": "24.jpg",
+        "width": 5054,
+        "height": 3369,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/24-480.jpg",
+            "960": "images/.derived/main/people-are-strange/24-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/24-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/24-640.jpg"
+        }
+      },
+      {
+        "file": "25.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/25-480.jpg",
+            "960": "images/.derived/main/people-are-strange/25-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/25-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/25-640.jpg"
+        }
+      },
+      {
+        "file": "26.jpg",
+        "width": 2400,
+        "height": 1599,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/26-480.jpg",
+            "960": "images/.derived/main/people-are-strange/26-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/26-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/26-640.jpg"
+        }
+      },
+      {
+        "file": "27.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/27-480.jpg",
+            "960": "images/.derived/main/people-are-strange/27-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/27-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/27-640.jpg"
+        }
+      },
+      {
+        "file": "28.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/people-are-strange/28-480.jpg",
+            "960": "images/.derived/main/people-are-strange/28-960.jpg",
+            "1600": "images/.derived/main/people-are-strange/28-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/people-are-strange/28-640.jpg"
+        }
+      }
+    ],
+    "space-oddity": [
+      {
+        "file": "_NZF5804.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/_NZF5804-480.jpg",
+            "960": "images/.derived/main/space-oddity/_NZF5804-960.jpg",
+            "1600": "images/.derived/main/space-oddity/_NZF5804-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/_NZF5804-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF6315-Editar.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/_NZF6315-Editar-480.jpg",
+            "960": "images/.derived/main/space-oddity/_NZF6315-Editar-960.jpg",
+            "1600": "images/.derived/main/space-oddity/_NZF6315-Editar-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/_NZF6315-Editar-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0306.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF0306-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF0306-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF0306-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF0306-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0338.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF0338-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF0338-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF0338-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF0338-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0437.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF0437-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF0437-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF0437-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF0437-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0458.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF0458-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF0458-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF0458-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF0458-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0588.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF0588-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF0588-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF0588-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF0588-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1872.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF1872-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF1872-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF1872-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF1872-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF2164.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF2164-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF2164-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF2164-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF2164-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF2630.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF2630-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF2630-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF2630-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF2630-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF2638.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF2638-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF2638-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF2638-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF2638-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF3568.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF3568-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF3568-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF3568-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF3568-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF3812.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF3812-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF3812-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF3812-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF3812-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF3872.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF3872-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF3872-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF3872-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF3872-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4021-2.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF4021-2-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF4021-2-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF4021-2-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF4021-2-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4040.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF4040-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF4040-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF4040-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF4040-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4105.jpg",
+        "width": 2057,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF4105-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF4105-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF4105-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF4105-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4195-Editar.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF4195-Editar-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF4195-Editar-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF4195-Editar-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF4195-Editar-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4365.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF4365-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF4365-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF4365-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF4365-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF5826-instagram.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF5826-instagram-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF5826-instagram-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF5826-instagram-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF5826-instagram-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6334-instagram.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF6334-instagram-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF6334-instagram-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF6334-instagram-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF6334-instagram-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF6420-instagram.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF6420-instagram-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF6420-instagram-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF6420-instagram-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF6420-instagram-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7176.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF7176-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF7176-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF7176-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF7176-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7772.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF7772-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF7772-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF7772-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF7772-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7792.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF7792-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF7792-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF7792-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF7792-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF8743.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF8743-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF8743-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF8743-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF8743-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF9122.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF9122-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF9122-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF9122-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF9122-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF9705-instagram.jpg",
+        "width": 2400,
+        "height": 886,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/DSCF9705-instagram-480.jpg",
+            "960": "images/.derived/main/space-oddity/DSCF9705-instagram-960.jpg",
+            "1600": "images/.derived/main/space-oddity/DSCF9705-instagram-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/DSCF9705-instagram-640.jpg"
+        }
+      },
+      {
+        "file": "GR000543.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR000543-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR000543-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR000543-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR000543-640.jpg"
+        }
+      },
+      {
+        "file": "GR002179.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR002179-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR002179-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR002179-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR002179-640.jpg"
+        }
+      },
+      {
+        "file": "GR004465.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR004465-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR004465-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR004465-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR004465-640.jpg"
+        }
+      },
+      {
+        "file": "GR004526.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR004526-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR004526-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR004526-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR004526-640.jpg"
+        }
+      },
+      {
+        "file": "GR005014-2.jpg",
+        "width": 2057,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR005014-2-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR005014-2-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR005014-2-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR005014-2-640.jpg"
+        }
+      },
+      {
+        "file": "GR005057.jpg",
+        "width": 2056,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR005057-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR005057-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR005057-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR005057-640.jpg"
+        }
+      },
+      {
+        "file": "GR005160-2.jpg",
+        "width": 2400,
+        "height": 1599,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR005160-2-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR005160-2-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR005160-2-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR005160-2-640.jpg"
+        }
+      },
+      {
+        "file": "GR005245.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR005245-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR005245-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR005245-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR005245-640.jpg"
+        }
+      },
+      {
+        "file": "GR005321.jpg",
+        "width": 2400,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR005321-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR005321-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR005321-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR005321-640.jpg"
+        }
+      },
+      {
+        "file": "GR005540.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/GR005540-480.jpg",
+            "960": "images/.derived/main/space-oddity/GR005540-960.jpg",
+            "1600": "images/.derived/main/space-oddity/GR005540-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/GR005540-640.jpg"
+        }
+      },
+      {
+        "file": "IMG_0056.jpg",
+        "width": 2400,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/IMG_0056-480.jpg",
+            "960": "images/.derived/main/space-oddity/IMG_0056-960.jpg",
+            "1600": "images/.derived/main/space-oddity/IMG_0056-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/IMG_0056-640.jpg"
+        }
+      },
+      {
+        "file": "scan035-Editar-instagram.jpg",
+        "width": 1545,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/space-oddity/scan035-Editar-instagram-480.jpg",
+            "960": "images/.derived/main/space-oddity/scan035-Editar-instagram-960.jpg",
+            "1600": "images/.derived/main/space-oddity/scan035-Editar-instagram-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/space-oddity/scan035-Editar-instagram-640.jpg"
+        }
+      }
+    ],
+    "the-boxer": [
+      {
+        "file": "1.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/1-480.jpg",
+            "960": "images/.derived/main/the-boxer/1-960.jpg",
+            "1600": "images/.derived/main/the-boxer/1-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/1-640.jpg"
+        }
+      },
+      {
+        "file": "2.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/2-480.jpg",
+            "960": "images/.derived/main/the-boxer/2-960.jpg",
+            "1600": "images/.derived/main/the-boxer/2-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/2-640.jpg"
+        }
+      },
+      {
+        "file": "3.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/3-480.jpg",
+            "960": "images/.derived/main/the-boxer/3-960.jpg",
+            "1600": "images/.derived/main/the-boxer/3-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/3-640.jpg"
+        }
+      },
+      {
+        "file": "4.jpg",
+        "width": 1599,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/4-480.jpg",
+            "960": "images/.derived/main/the-boxer/4-960.jpg",
+            "1600": "images/.derived/main/the-boxer/4-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/4-640.jpg"
+        }
+      },
+      {
+        "file": "5.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/5-480.jpg",
+            "960": "images/.derived/main/the-boxer/5-960.jpg",
+            "1600": "images/.derived/main/the-boxer/5-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/5-640.jpg"
+        }
+      },
+      {
+        "file": "6.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/6-480.jpg",
+            "960": "images/.derived/main/the-boxer/6-960.jpg",
+            "1600": "images/.derived/main/the-boxer/6-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/6-640.jpg"
+        }
+      },
+      {
+        "file": "7.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/7-480.jpg",
+            "960": "images/.derived/main/the-boxer/7-960.jpg",
+            "1600": "images/.derived/main/the-boxer/7-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/7-640.jpg"
+        }
+      },
+      {
+        "file": "8.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/8-480.jpg",
+            "960": "images/.derived/main/the-boxer/8-960.jpg",
+            "1600": "images/.derived/main/the-boxer/8-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/8-640.jpg"
+        }
+      },
+      {
+        "file": "9.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/9-480.jpg",
+            "960": "images/.derived/main/the-boxer/9-960.jpg",
+            "1600": "images/.derived/main/the-boxer/9-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/9-640.jpg"
+        }
+      },
+      {
+        "file": "10.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/10-480.jpg",
+            "960": "images/.derived/main/the-boxer/10-960.jpg",
+            "1600": "images/.derived/main/the-boxer/10-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/10-640.jpg"
+        }
+      },
+      {
+        "file": "11.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/11-480.jpg",
+            "960": "images/.derived/main/the-boxer/11-960.jpg",
+            "1600": "images/.derived/main/the-boxer/11-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/11-640.jpg"
+        }
+      },
+      {
+        "file": "12.jpg",
+        "width": 2057,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/12-480.jpg",
+            "960": "images/.derived/main/the-boxer/12-960.jpg",
+            "1600": "images/.derived/main/the-boxer/12-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/12-640.jpg"
+        }
+      },
+      {
+        "file": "13.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/13-480.jpg",
+            "960": "images/.derived/main/the-boxer/13-960.jpg",
+            "1600": "images/.derived/main/the-boxer/13-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/13-640.jpg"
+        }
+      },
+      {
+        "file": "14.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/14-480.jpg",
+            "960": "images/.derived/main/the-boxer/14-960.jpg",
+            "1600": "images/.derived/main/the-boxer/14-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/14-640.jpg"
+        }
+      },
+      {
+        "file": "15.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/15-480.jpg",
+            "960": "images/.derived/main/the-boxer/15-960.jpg",
+            "1600": "images/.derived/main/the-boxer/15-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/15-640.jpg"
+        }
+      },
+      {
+        "file": "16.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/16-480.jpg",
+            "960": "images/.derived/main/the-boxer/16-960.jpg",
+            "1600": "images/.derived/main/the-boxer/16-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/16-640.jpg"
+        }
+      },
+      {
+        "file": "17.jpg",
+        "width": 1599,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/17-480.jpg",
+            "960": "images/.derived/main/the-boxer/17-960.jpg",
+            "1600": "images/.derived/main/the-boxer/17-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/17-640.jpg"
+        }
+      },
+      {
+        "file": "18.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/18-480.jpg",
+            "960": "images/.derived/main/the-boxer/18-960.jpg",
+            "1600": "images/.derived/main/the-boxer/18-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/18-640.jpg"
+        }
+      },
+      {
+        "file": "19.jpg",
+        "width": 2400,
+        "height": 1599,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/the-boxer/19-480.jpg",
+            "960": "images/.derived/main/the-boxer/19-960.jpg",
+            "1600": "images/.derived/main/the-boxer/19-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/the-boxer/19-640.jpg"
+        }
+      }
+    ],
+    "us-and-them": [
+      {
+        "file": "_NZF1231.jpg",
+        "width": 2400,
+        "height": 1599,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/_NZF1231-480.jpg",
+            "960": "images/.derived/main/us-and-them/_NZF1231-960.jpg",
+            "1600": "images/.derived/main/us-and-them/_NZF1231-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/_NZF1231-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF1246.jpg",
+        "width": 2400,
+        "height": 1599,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/_NZF1246-480.jpg",
+            "960": "images/.derived/main/us-and-them/_NZF1246-960.jpg",
+            "1600": "images/.derived/main/us-and-them/_NZF1246-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/_NZF1246-640.jpg"
+        }
+      },
+      {
+        "file": "_NZF1269-Editar.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/_NZF1269-Editar-480.jpg",
+            "960": "images/.derived/main/us-and-them/_NZF1269-Editar-960.jpg",
+            "1600": "images/.derived/main/us-and-them/_NZF1269-Editar-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/_NZF1269-Editar-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0142.jpg",
+        "width": 2400,
+        "height": 1599,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF0142-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF0142-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF0142-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF0142-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0573.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF0573-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF0573-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF0573-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF0573-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF0593.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF0593-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF0593-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF0593-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF0593-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1016.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1016-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1016-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1016-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1016-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1052.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1052-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1052-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1052-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1052-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1356-2.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1356-2-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1356-2-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1356-2-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1356-2-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1580.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1580-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1580-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1580-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1580-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1619.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1619-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1619-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1619-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1619-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1821.jpg",
+        "width": 2400,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1821-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1821-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1821-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1821-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1863.jpg",
+        "width": 2400,
+        "height": 1350,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1863-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1863-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1863-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1863-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1880.jpg",
+        "width": 2400,
+        "height": 1350,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1880-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1880-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1880-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1880-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1881.jpg",
+        "width": 2400,
+        "height": 1350,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1881-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1881-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1881-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1881-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1920.jpg",
+        "width": 2400,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1920-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1920-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1920-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1920-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF1957.jpg",
+        "width": 2400,
+        "height": 1350,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF1957-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF1957-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF1957-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF1957-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF2763.jpg",
+        "width": 2400,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF2763-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF2763-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF2763-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF2763-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF3204.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF3204-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF3204-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF3204-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF3204-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF3346.jpg",
+        "width": 1599,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF3346-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF3346-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF3346-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF3346-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF3843.jpg",
+        "width": 2400,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF3843-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF3843-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF3843-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF3843-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF3855.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF3855-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF3855-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF3855-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF3855-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF3928.jpg",
+        "width": 2400,
+        "height": 1599,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF3928-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF3928-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF3928-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF3928-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4053.jpg",
+        "width": 2057,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF4053-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF4053-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF4053-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF4053-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4089.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF4089-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF4089-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF4089-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF4089-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4102.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF4102-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF4102-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF4102-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF4102-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4220-Mejorado-NR.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF4220-Mejorado-NR-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF4220-Mejorado-NR-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF4220-Mejorado-NR-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF4220-Mejorado-NR-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4279-2.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF4279-2-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF4279-2-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF4279-2-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF4279-2-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4289.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF4289-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF4289-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF4289-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF4289-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF4315.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF4315-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF4315-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF4315-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF4315-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7141.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF7141-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF7141-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF7141-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF7141-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7257.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF7257-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF7257-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF7257-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF7257-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7355.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF7355-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF7355-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF7355-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF7355-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7361.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF7361-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF7361-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF7361-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF7361-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF7613.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF7613-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF7613-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF7613-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF7613-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF8594.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF8594-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF8594-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF8594-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF8594-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF8746.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF8746-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF8746-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF8746-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF8746-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF9079.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF9079-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF9079-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF9079-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF9079-640.jpg"
+        }
+      },
+      {
+        "file": "DSCF9082.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/DSCF9082-480.jpg",
+            "960": "images/.derived/main/us-and-them/DSCF9082-960.jpg",
+            "1600": "images/.derived/main/us-and-them/DSCF9082-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/DSCF9082-640.jpg"
+        }
+      },
+      {
+        "file": "GR000334.jpg",
+        "width": 2400,
+        "height": 1599,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR000334-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR000334-960.jpg",
+            "1600": "images/.derived/main/us-and-them/GR000334-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR000334-640.jpg"
+        }
+      },
+      {
+        "file": "GR000468.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR000468-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR000468-960.jpg",
+            "1600": "images/.derived/main/us-and-them/GR000468-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR000468-640.jpg"
+        }
+      },
+      {
+        "file": "GR001178.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR001178-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR001178-960.jpg",
+            "1600": "images/.derived/main/us-and-them/GR001178-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR001178-640.jpg"
+        }
+      },
+      {
+        "file": "GR001469.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR001469-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR001469-960.jpg",
+            "1600": "images/.derived/main/us-and-them/GR001469-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR001469-640.jpg"
+        }
+      },
+      {
+        "file": "GR001948.jpg",
+        "width": 1600,
+        "height": 2400,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR001948-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR001948-960.jpg",
+            "1600": "images/.derived/main/us-and-them/GR001948-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR001948-640.jpg"
+        }
+      },
+      {
+        "file": "GR001957.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR001957-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR001957-960.jpg",
+            "1600": "images/.derived/main/us-and-them/GR001957-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR001957-640.jpg"
+        }
+      },
+      {
+        "file": "GR003534.jpg",
+        "width": 2400,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR003534-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR003534-960.jpg",
+            "1600": "images/.derived/main/us-and-them/GR003534-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR003534-640.jpg"
+        }
+      },
+      {
+        "file": "GR005032-2.jpg",
+        "width": 2400,
+        "height": 2057,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR005032-2-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR005032-2-960.jpg",
+            "1600": "images/.derived/main/us-and-them/GR005032-2-1600.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR005032-2-640.jpg"
+        }
+      },
+      {
+        "file": "GR005053-2.jpg",
+        "width": 1066,
+        "height": 1600,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR005053-2-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR005053-2-960.jpg",
+            "1600": "images/us-and-them/GR005053-2.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR005053-2-640.jpg"
+        }
+      },
+      {
+        "file": "GR005065.jpg",
+        "width": 1600,
+        "height": 1066,
+        "sources": {
+          "main": {
+            "480": "images/.derived/main/us-and-them/GR005065-480.jpg",
+            "960": "images/.derived/main/us-and-them/GR005065-960.jpg",
+            "1600": "images/us-and-them/GR005065.jpg"
+          },
+          "thumb": "images/.derived/thumb/us-and-them/GR005065-640.jpg"
+        }
+      }
+    ]
+  }
+}

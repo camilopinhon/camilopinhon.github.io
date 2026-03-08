@@ -6,6 +6,12 @@
 
   const IMAGE_EXT_REGEX = /\.(avif|jpe?g|png|webp|gif)$/i;
   const isFileProtocol = window.location.protocol === "file:";
+  const MAIN_IMAGE_SIZES = "(max-width: 920px) calc(100vw - 36px), 1000px";
+  const GRID_IMAGE_SIZES = {
+    default: "(max-width: 920px) 50vw, 33vw",
+    wide: "(max-width: 920px) 50vw, 66vw",
+    narrow: "(max-width: 920px) 50vw, 25vw"
+  };
 
   const projectNav = document.getElementById("project-nav");
   const instagramLink = document.getElementById("instagram-link");
@@ -32,7 +38,8 @@
     homePhotoIndex: 0,
     homeLoaded: false,
     projectLoadPromises: new Map(),
-    loadedProjects: new Set()
+    loadedProjects: new Set(),
+    imageManifest: null
   };
 
   setupStaticFields();
@@ -41,12 +48,170 @@
   showView("home");
   renderHomePreview();
 
-  hydrateHomePhotosFromFolder().finally(() => {
-    renderHomePreview();
+  loadImageManifest().finally(() => {
+    hydrateHomePhotosFromFolder().finally(() => {
+      renderHomePreview();
+    });
   });
 
   if (state.selectedProject) {
     ensureProjectPhotosLoaded(state.selectedProject);
+  }
+
+  async function loadImageManifest() {
+    try {
+      const response = await fetch("images/manifest.json", { cache: "no-store" });
+      if (!response.ok) {
+        state.imageManifest = null;
+        return;
+      }
+      const manifest = await response.json();
+      if (!manifest || typeof manifest !== "object" || typeof manifest.projects !== "object") {
+        state.imageManifest = null;
+        return;
+      }
+      state.imageManifest = manifest;
+    } catch (_error) {
+      state.imageManifest = null;
+    }
+  }
+
+  function getManifestPhotos(project) {
+    const folder = project?.imageFolder || project?.id;
+    if (!folder) {
+      return [];
+    }
+    const entries = state.imageManifest?.projects?.[folder];
+    if (!Array.isArray(entries)) {
+      return [];
+    }
+    return entries
+      .filter((photo) => photo && typeof photo.file === "string")
+      .map((photo) => ({
+        file: photo.file,
+        alt: photo.alt || "",
+        width: Number(photo.width) || undefined,
+        height: Number(photo.height) || undefined,
+        sources: normalizePhotoSources(photo.sources)
+      }));
+  }
+
+  function normalizePhotoSources(sources) {
+    if (!sources || typeof sources !== "object") {
+      return undefined;
+    }
+
+    const main = sources.main && typeof sources.main === "object"
+      ? Object.fromEntries(
+          Object.entries(sources.main)
+            .filter(([key, value]) => Number(key) > 0 && typeof value === "string")
+            .sort((a, b) => Number(a[0]) - Number(b[0]))
+        )
+      : undefined;
+
+    const thumb = typeof sources.thumb === "string" ? sources.thumb : undefined;
+    return main || thumb ? { main, thumb } : undefined;
+  }
+
+  function getGridSizes(photo) {
+    if (photo?.grid === "wide") {
+      return GRID_IMAGE_SIZES.wide;
+    }
+    if (photo?.grid === "narrow") {
+      return GRID_IMAGE_SIZES.narrow;
+    }
+    return GRID_IMAGE_SIZES.default;
+  }
+
+  function setImagePerformanceAttributes(img, options = {}) {
+    img.decoding = "async";
+    if (options.loading) {
+      img.loading = options.loading;
+    }
+    if (options.fetchpriority) {
+      img.fetchPriority = options.fetchpriority;
+    }
+  }
+
+  function applyResponsiveSources(img, project, photo, options = {}) {
+    const srcset = buildSrcSet(project, photo, options.variant);
+    if (srcset) {
+      img.srcset = srcset;
+      img.sizes = options.sizes || MAIN_IMAGE_SIZES;
+    } else {
+      img.removeAttribute("srcset");
+      img.removeAttribute("sizes");
+    }
+    setImageSource(img, project, photo, options.variant);
+  }
+
+  function buildSrcSet(project, photo, variant = "main") {
+    const candidates = buildPhotoCandidates(project, photo, { variant });
+    if (!candidates.length) {
+      return "";
+    }
+    const uniqueByWidth = new Map();
+    candidates.forEach((entry) => {
+      if (entry.width > 0 && !uniqueByWidth.has(entry.width)) {
+        uniqueByWidth.set(entry.width, entry.src);
+      }
+    });
+    if (uniqueByWidth.size < 2) {
+      return "";
+    }
+    return [...uniqueByWidth.entries()]
+      .sort((a, b) => a[0] - b[0])
+      .map(([width, src]) => `${src} ${width}w`)
+      .join(", ");
+  }
+
+  function mergePhotoMetadata(primaryPhoto, secondaryPhoto) {
+    const merged = { ...primaryPhoto, ...secondaryPhoto };
+    if (primaryPhoto?.sources || secondaryPhoto?.sources) {
+      merged.sources = {
+        ...(primaryPhoto?.sources || {}),
+        ...(secondaryPhoto?.sources || {})
+      };
+    }
+    return merged;
+  }
+
+  function withSourceFallback(photo, project) {
+    const safePhoto = photo || {};
+    if (safePhoto.src) {
+      return safePhoto;
+    }
+    return {
+      ...safePhoto,
+      sources: {
+        ...(safePhoto.sources || {}),
+        original: resolvePhotoSrc(project, safePhoto)
+      }
+    };
+  }
+
+  function hydrateHomePhotosFromFolder() {
+    return (async () => {
+      state.homeLoaded = false;
+      const homeProject = {
+        id: "home",
+        imageFolder: data?.home?.imageFolder || "home",
+        title: "Home",
+        photos: []
+      };
+
+      try {
+        const photos = await detectProjectPhotos(homeProject);
+        applyFastLayoutDefaults(homeProject, photos);
+        state.homePhotos = photos;
+        state.homePhotoIndex = 0;
+      } catch (_error) {
+        state.homePhotos = [];
+        state.homePhotoIndex = 0;
+      } finally {
+        state.homeLoaded = true;
+      }
+    })();
   }
 
   function setupStaticFields() {
@@ -190,29 +355,6 @@
     });
   }
 
-  async function hydrateHomePhotosFromFolder() {
-    state.homeLoaded = false;
-    const repoInfo = resolveGitHubRepoInfo();
-    const homeProject = {
-      id: "home",
-      imageFolder: data?.home?.imageFolder || "home",
-      title: "Home",
-      photos: []
-    };
-
-    try {
-      const photos = await detectProjectPhotos(homeProject, repoInfo);
-      applyFastLayoutDefaults(homeProject, photos);
-      state.homePhotos = photos;
-      state.homePhotoIndex = 0;
-    } catch (_error) {
-      state.homePhotos = [];
-      state.homePhotoIndex = 0;
-    } finally {
-      state.homeLoaded = true;
-    }
-  }
-
   async function ensureProjectPhotosLoaded(project) {
     if (!project?.id) {
       return;
@@ -229,8 +371,7 @@
     }
 
     const loadPromise = (async () => {
-      const repoInfo = resolveGitHubRepoInfo();
-      const photos = await detectProjectPhotos(project, repoInfo);
+      const photos = await detectProjectPhotos(project);
       applyFastLayoutDefaults(project, photos);
       project.photos = photos;
       state.loadedProjects.add(project.id);
@@ -245,10 +386,16 @@
     }
   }
 
-  async function detectProjectPhotos(project, repoInfo) {
-    const folderFiles = await listImagesFromFolder(project);
-    const githubFiles = folderFiles.length ? [] : await listImagesFromGitHub(project, repoInfo);
-    const detectedFiles = folderFiles.length ? folderFiles : githubFiles;
+  async function detectProjectPhotos(project) {
+    const repoInfo = resolveGitHubRepoInfo();
+    const manifestPhotos = getManifestPhotos(project);
+    const folderFiles = manifestPhotos.length ? [] : await listImagesFromFolder(project);
+    const githubFiles = manifestPhotos.length || folderFiles.length
+      ? []
+      : await listImagesFromGitHub(project, repoInfo);
+    const detectedPhotos = manifestPhotos.length
+      ? manifestPhotos
+      : (folderFiles.length ? folderFiles : githubFiles).map((file) => ({ file }));
 
     const manualPhotos = Array.isArray(project.photos) ? project.photos : [];
     const manualByFile = new Map(
@@ -257,13 +404,13 @@
         .map((photo) => [photo.file, photo])
     );
 
-    const mergedDetected = detectedFiles.map((file, index) => {
-      const existing = manualByFile.get(file);
+    const mergedDetected = detectedPhotos.map((detected, index) => {
+      const existing = manualByFile.get(detected.file);
       if (existing) {
-        return existing;
+        return mergePhotoMetadata(detected, existing);
       }
       return {
-        file,
+        ...detected,
         alt: `${project.title} ${index + 1}`
       };
     });
@@ -275,10 +422,10 @@
       if (photo.src) {
         return true;
       }
-      return typeof photo.file === "string" && !detectedFiles.includes(photo.file);
+      return typeof photo.file === "string" && !detectedPhotos.some((detected) => detected.file === photo.file);
     });
 
-    return [...mergedDetected, ...manualOnly];
+    return [...mergedDetected, ...manualOnly].map((photo) => withSourceFallback(photo, project));
   }
 
   function applyFastLayoutDefaults(project, photos) {
@@ -416,9 +563,18 @@
     }
 
     const img = document.createElement("img");
-    setImageSource(img, homeProject, homeImage);
+    applyResponsiveSources(img, homeProject, homeImage, {
+      variant: "main",
+      sizes: MAIN_IMAGE_SIZES
+    });
     img.alt = homeImage.alt || "Home";
-    img.loading = "eager";
+    if (homeImage.width) {
+      img.width = homeImage.width;
+    }
+    if (homeImage.height) {
+      img.height = homeImage.height;
+    }
+    setImagePerformanceAttributes(img, { loading: "eager", fetchpriority: "high" });
     homePreview.appendChild(img);
   }
 
@@ -462,9 +618,21 @@
     projectFrame.innerHTML = "";
 
     const img = document.createElement("img");
-    setImageSource(img, project, currentPhoto);
+    applyResponsiveSources(img, project, currentPhoto, {
+      variant: "main",
+      sizes: MAIN_IMAGE_SIZES
+    });
     img.alt = currentPhoto.alt || project.title;
-    img.loading = "eager";
+    if (currentPhoto.width) {
+      img.width = currentPhoto.width;
+    }
+    if (currentPhoto.height) {
+      img.height = currentPhoto.height;
+    }
+    setImagePerformanceAttributes(img, {
+      loading: "eager",
+      fetchpriority: state.selectedPhotoIndex === 0 ? "high" : "auto"
+    });
     projectFrame.appendChild(img);
 
     renderAllGrid(photos);
@@ -483,9 +651,12 @@
       fig.className = `grid-card ${photo.grid || ""}`.trim();
 
       const img = document.createElement("img");
-      setImageSource(img, state.selectedProject, photo);
+      applyResponsiveSources(img, state.selectedProject, photo, {
+        variant: "thumb",
+        sizes: getGridSizes(photo)
+      });
       img.alt = photo.alt || `Photo ${index + 1}`;
-      img.loading = "lazy";
+      setImagePerformanceAttributes(img, { loading: "lazy" });
       img.addEventListener("click", () => {
         state.selectedPhotoIndex = index;
         state.allMode = false;
@@ -614,8 +785,8 @@
     return `images/${folder}/${encodePathSegment(fileName)}`;
   }
 
-  function setImageSource(img, project, photo) {
-    const candidates = buildPhotoCandidates(project, photo);
+  function setImageSource(img, project, photo, variant = "main") {
+    const candidates = buildPhotoCandidates(project, photo, { variant });
     if (!candidates.length) {
       img.removeAttribute("src");
       return;
@@ -625,17 +796,18 @@
     img.onerror = () => {
       index += 1;
       if (index < candidates.length) {
-        img.src = candidates[index];
+        img.src = candidates[index].src;
         return;
       }
       img.onerror = null;
     };
-    img.src = candidates[index];
+    img.src = candidates[index].src;
   }
 
-  function buildPhotoCandidates(project, photo) {
+  function buildPhotoCandidates(project, photo, options = {}) {
+    const variant = options.variant || "main";
     if (photo?.src) {
-      return [photo.src];
+      return [{ src: photo.src, width: Number(photo.width) || 0 }];
     }
 
     const fileName = photo?.file || "";
@@ -644,24 +816,49 @@
       return [];
     }
 
+    const manifestSources = photo?.sources;
+    const candidates = [];
+    if (variant === "thumb" && typeof manifestSources?.thumb === "string") {
+      candidates.push({ src: manifestSources.thumb, width: 640 });
+    }
+    if (manifestSources?.main && typeof manifestSources.main === "object") {
+      Object.entries(manifestSources.main).forEach(([width, src]) => {
+        if (typeof src === "string") {
+          candidates.push({ src, width: Number(width) || 0 });
+        }
+      });
+    }
+
     const encodedFile = encodePathSegment(fileName);
     const encodedFolder = encodePathSegment(folder);
     const localEncoded = `images/${encodedFolder}/${encodedFile}`;
     const localRaw = `images/${folder}/${fileName}`;
-
-    const candidates = [localEncoded];
+    const maxDeclaredWidth = Number(photo?.width) || 0;
+    candidates.push({ src: localEncoded, width: maxDeclaredWidth });
     if (localRaw !== localEncoded) {
-      candidates.push(localRaw);
+      candidates.push({ src: localRaw, width: maxDeclaredWidth });
     }
 
     const repoInfo = resolveGitHubRepoInfo();
     if (repoInfo) {
       candidates.push(
-        `https://raw.githubusercontent.com/${repoInfo.owner}/${repoInfo.repo}/${repoInfo.branch}/images/${encodedFolder}/${encodedFile}`
+        {
+          src: `https://raw.githubusercontent.com/${repoInfo.owner}/${repoInfo.repo}/${repoInfo.branch}/images/${encodedFolder}/${encodedFile}`,
+          width: maxDeclaredWidth
+        }
       );
     }
 
-    return [...new Set(candidates)];
+    const deduped = [];
+    const seen = new Set();
+    candidates.forEach((candidate) => {
+      if (!candidate?.src || seen.has(candidate.src)) {
+        return;
+      }
+      seen.add(candidate.src);
+      deduped.push(candidate);
+    });
+    return deduped;
   }
 
   function encodePathSegment(value) {

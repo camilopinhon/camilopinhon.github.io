@@ -219,6 +219,11 @@ body {
   display: block;
 }
 
+.grid-card img.grid-img-pending {
+  min-height: 140px;
+  background: #efefef;
+}
+
 #contact-view h2 {
   margin: 0 0 14px;
   font-size: 18px;

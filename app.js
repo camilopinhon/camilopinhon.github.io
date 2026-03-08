@@ -6,7 +6,7 @@
 
   const IMAGE_EXT_REGEX = /\.(avif|jpe?g|png|webp|gif)$/i;
   const isFileProtocol = window.location.protocol === "file:";
-  const MAIN_IMAGE_SIZES = "(max-width: 920px) calc(100vw - 36px), 1000px";
+  const MAIN_IMAGE_SIZES = "(max-width: 920px) 360px, 1000px";
   const GRID_IMAGE_SIZES = {
     default: "(max-width: 920px) 50vw, 33vw",
     wide: "(max-width: 920px) 50vw, 66vw",
@@ -41,7 +41,8 @@
     loadedProjects: new Set(),
     imageManifest: null,
     githubImageIndex: null,
-    githubImageIndexPromise: null
+    githubImageIndexPromise: null,
+    gridImageObserver: null
   };
 
   setupStaticFields();
@@ -689,7 +690,39 @@
   function renderAllGrid(photos) {
     allGrid.innerHTML = "";
     if (!state.allMode) {
+      if (state.gridImageObserver) {
+        state.gridImageObserver.disconnect();
+        state.gridImageObserver = null;
+      }
       return;
+    }
+
+    if (state.gridImageObserver) {
+      state.gridImageObserver.disconnect();
+      state.gridImageObserver = null;
+    }
+
+    if ("IntersectionObserver" in window) {
+      state.gridImageObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+            const img = entry.target;
+            const loader = img.__lazyLoad;
+            if (typeof loader === "function") {
+              loader();
+            }
+            observer.unobserve(img);
+          });
+        },
+        {
+          root: null,
+          rootMargin: "220px 0px",
+          threshold: 0.01
+        }
+      );
     }
 
     const BATCH_SIZE = 18;
@@ -709,12 +742,22 @@
         fig.className = `grid-card ${photo.grid || ""}`.trim();
 
         const img = document.createElement("img");
-        applyResponsiveSources(img, state.selectedProject, photo, {
-          variant: "thumb",
-          sizes: getGridSizes(photo)
-        });
+        img.classList.add("grid-img-pending");
+        img.__lazyLoad = () => {
+          applyResponsiveSources(img, state.selectedProject, photo, {
+            variant: "thumb",
+            sizes: getGridSizes(photo)
+          });
+          img.classList.remove("grid-img-pending");
+          img.__lazyLoad = null;
+        };
         img.alt = photo.alt || `Photo ${index + 1}`;
         setImagePerformanceAttributes(img, { loading: "lazy" });
+        if (state.gridImageObserver) {
+          state.gridImageObserver.observe(img);
+        } else {
+          img.__lazyLoad();
+        }
         img.addEventListener("click", () => {
           state.selectedPhotoIndex = index;
           state.allMode = false;

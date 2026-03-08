@@ -172,7 +172,7 @@
   }
 
   function mergePhotoMetadata(primaryPhoto, secondaryPhoto) {
-    const merged = { ...primaryPhoto, ...secondaryPhoto };
+    const merged = { ...(primaryPhoto || {}), ...(secondaryPhoto || {}) };
     if (primaryPhoto?.sources || secondaryPhoto?.sources) {
       merged.sources = {
         ...(primaryPhoto?.sources || {}),
@@ -468,13 +468,18 @@
   async function detectProjectPhotos(project) {
     const repoInfo = resolveGitHubRepoInfo();
     const manifestPhotos = getManifestPhotos(project);
-    const folderFiles = manifestPhotos.length ? [] : await listImagesFromFolder(project);
-    const githubFiles = manifestPhotos.length || folderFiles.length
-      ? []
-      : await listImagesFromGitHub(project, repoInfo);
-    const detectedPhotos = manifestPhotos.length
-      ? manifestPhotos
-      : (folderFiles.length ? folderFiles : githubFiles).map((file) => ({ file }));
+    const manifestByFile = new Map(
+      manifestPhotos
+        .filter((photo) => photo && typeof photo.file === "string")
+        .map((photo) => [photo.file, photo])
+    );
+
+    const folderFiles = await listImagesFromFolder(project);
+    const githubFiles = folderFiles.length ? [] : await listImagesFromGitHub(project, repoInfo);
+    const liveFiles = folderFiles.length ? folderFiles : githubFiles;
+    const detectedPhotos = liveFiles.length
+      ? liveFiles.map((file) => mergePhotoMetadata({ file }, manifestByFile.get(file)))
+      : manifestPhotos;
 
     const manualPhotos = Array.isArray(project.photos) ? project.photos : [];
     const manualByFile = new Map(

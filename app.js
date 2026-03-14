@@ -989,7 +989,7 @@
   }
 
   function setImageSource(img, project, photo, variant = "main", options = {}) {
-    const candidates = buildPhotoCandidates(project, photo, { variant });
+    const candidates = buildFallbackCandidates(project, photo, { variant });
     if (!candidates.length) {
       img.removeAttribute("src");
       return;
@@ -1010,6 +1010,44 @@
       img.onerror = null;
     };
     img.src = candidates[index].src;
+  }
+
+  function buildFallbackCandidates(project, photo, options = {}) {
+    const variant = options.variant || "main";
+    if (photo?.src) {
+      return [{ src: photo.src, width: Number(photo.width) || 0 }];
+    }
+
+    const candidates = [];
+    const primarySrc = resolvePhotoSrc(project, photo);
+    if (primarySrc) {
+      candidates.push({ src: primarySrc, width: Number(photo?.width) || 0 });
+    }
+
+    const fileName = photo?.file || "";
+    const folder = project?.imageFolder || project?.id || "";
+    if (fileName && folder) {
+      const localRaw = `images/${folder}/${fileName}`;
+      if (localRaw !== primarySrc) {
+        candidates.push({ src: localRaw, width: Number(photo?.width) || 0 });
+      }
+
+      const repoInfo = resolveGitHubRepoInfo();
+      if (repoInfo) {
+        const encodedFile = encodePathSegment(fileName);
+        const encodedFolder = encodePathSegment(folder);
+        candidates.push({
+          src: `https://raw.githubusercontent.com/${repoInfo.owner}/${repoInfo.repo}/${repoInfo.branch}/images/${encodedFolder}/${encodedFile}`,
+          width: Number(photo?.width) || 0
+        });
+      }
+    }
+
+    if (variant === "thumb" && typeof photo?.sources?.thumb === "string") {
+      candidates.push({ src: photo.sources.thumb, width: 640 });
+    }
+
+    return dedupeCandidates(candidates);
   }
 
   function buildPhotoCandidates(project, photo, options = {}) {
@@ -1057,6 +1095,10 @@
       );
     }
 
+    return dedupeCandidates(candidates);
+  }
+
+  function dedupeCandidates(candidates) {
     const deduped = [];
     const seen = new Set();
     candidates.forEach((candidate) => {

@@ -6,11 +6,15 @@
 
   const IMAGE_EXT_REGEX = /\.(avif|jpe?g|png|webp|gif)$/i;
   const isFileProtocol = window.location.protocol === "file:";
-  const MAIN_IMAGE_SIZES = "(max-width: 920px) 360px, 1000px";
+  const MAIN_IMAGE_SIZES =
+    "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc(100vw - 32px), 1000px";
   const GRID_IMAGE_SIZES = {
-    default: "(max-width: 920px) 50vw, 33vw",
-    wide: "(max-width: 920px) 50vw, 66vw",
-    narrow: "(max-width: 920px) 50vw, 25vw"
+    default:
+      "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc((100vw - 42px) / 2), 33vw",
+    wide:
+      "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc((100vw - 42px) / 2), 66vw",
+    narrow:
+      "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc((100vw - 42px) / 2), 25vw"
   };
 
   const projectNav = document.getElementById("project-nav");
@@ -64,7 +68,7 @@
 
   async function loadImageManifest() {
     try {
-      const response = await fetch("images/manifest.json", { cache: "no-store" });
+      const response = await fetch("images/manifest.json");
       if (!response.ok) {
         state.imageManifest = null;
         return;
@@ -532,7 +536,7 @@
     const url = `images/${folder}/`;
 
     try {
-      const response = await fetch(url, { cache: "no-store" });
+      const response = await fetch(url);
       if (!response.ok) {
         return [];
       }
@@ -693,7 +697,7 @@
     const img = document.createElement("img");
     applyResponsiveSources(img, homeProject, homeImage, {
       variant: "thumb",
-      sizes: "(max-width: 920px) 100vw, 640px"
+      sizes: "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc(100vw - 32px), 640px"
     });
     img.alt = homeImage.alt || "Home";
     if (homeImage.width) {
@@ -825,13 +829,21 @@
         const img = document.createElement("img");
         img.classList.add("grid-img-pending");
         img.__lazyLoad = () => {
-          setImageSource(img, state.selectedProject, photo, "thumb", {
+          applyResponsiveSources(img, state.selectedProject, photo, {
+            variant: "thumb",
+            sizes: getGridSizes(photo),
             clearSrcSetOnError: true
           });
           img.classList.remove("grid-img-pending");
           img.__lazyLoad = null;
         };
         img.alt = photo.alt || `Photo ${index + 1}`;
+        if (photo.width) {
+          img.width = photo.width;
+        }
+        if (photo.height) {
+          img.height = photo.height;
+        }
         setImagePerformanceAttributes(img, { loading: "lazy" });
         if (state.gridImageObserver) {
           state.gridImageObserver.observe(img);

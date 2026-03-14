@@ -11,9 +11,11 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 const IMAGES_DIR = path.join(ROOT_DIR, "images");
 const DERIVED_DIR = path.join(IMAGES_DIR, "derived");
 
-const MAIN_WIDTHS = [480, 960, 1600];
+const MAIN_WIDTHS = [320, 480, 960, 1600];
 const THUMB_WIDTH = 640;
-const JPEG_QUALITY = process.env.JPEG_QUALITY || "68";
+const JPEG_QUALITY = Number(process.env.JPEG_QUALITY || 68);
+const JPEG_QUALITY_MOBILE = Number(process.env.JPEG_QUALITY_MOBILE || 56);
+const JPEG_QUALITY_THUMB = Number(process.env.JPEG_QUALITY_THUMB || 60);
 const IMAGE_EXT_REGEX = /\.(avif|jpe?g|png|webp)$/i;
 
 function fail(message) {
@@ -93,12 +95,23 @@ function shouldRegenerate(sourcePath, targetPath) {
   return sourceMtime > targetMtime;
 }
 
-function generateJpegVariant(sourcePath, targetPath, maxDimension) {
+function getVariantQuality(maxDimension, variant) {
+  if (variant === "thumb") {
+    return JPEG_QUALITY_THUMB;
+  }
+  if (maxDimension <= 480) {
+    return JPEG_QUALITY_MOBILE;
+  }
+  return JPEG_QUALITY;
+}
+
+function generateJpegVariant(sourcePath, targetPath, maxDimension, variant = "main") {
   if (!shouldRegenerate(sourcePath, targetPath)) {
     return true;
   }
 
   ensureDir(path.dirname(targetPath));
+  const quality = getVariantQuality(maxDimension, variant);
 
   const out = spawnSync(
     "sips",
@@ -110,7 +123,7 @@ function generateJpegVariant(sourcePath, targetPath, maxDimension) {
       "jpeg",
       "-s",
       "formatOptions",
-      String(JPEG_QUALITY),
+      String(quality),
       sourcePath,
       "--out",
       targetPath
@@ -141,14 +154,14 @@ function buildPhotoEntry(folder, fileName) {
     }
 
     const targetPath = path.join(DERIVED_DIR, "main", folder, buildDerivedName(fileName, mainWidth));
-    const generated = generateJpegVariant(sourcePath, targetPath, mainWidth);
+    const generated = generateJpegVariant(sourcePath, targetPath, mainWidth, "main");
     mainSources[mainWidth] = generated ? toPosixRelative(targetPath) : toPosixRelative(sourcePath);
   }
 
   let thumbSource = toPosixRelative(sourcePath);
   if (maxDimension > THUMB_WIDTH) {
     const thumbPath = path.join(DERIVED_DIR, "thumb", folder, buildDerivedName(fileName, THUMB_WIDTH));
-    const generated = generateJpegVariant(sourcePath, thumbPath, THUMB_WIDTH);
+    const generated = generateJpegVariant(sourcePath, thumbPath, THUMB_WIDTH, "thumb");
     thumbSource = generated ? toPosixRelative(thumbPath) : toPosixRelative(sourcePath);
   }
 

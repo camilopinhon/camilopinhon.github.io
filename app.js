@@ -46,9 +46,7 @@
     imageManifest: null,
     githubImageIndex: null,
     githubImageIndexPromise: null,
-    gridImageObserver: null,
-    homeRenderToken: 0,
-    projectRenderToken: 0
+    gridImageObserver: null
   };
 
   setupStaticFields();
@@ -153,48 +151,8 @@
       img.removeAttribute("sizes");
     }
     setImageSource(img, project, photo, options.variant, {
-      clearSrcSetOnError: options.clearSrcSetOnError !== false,
-      onExhausted: options.onExhausted
+      clearSrcSetOnError: options.clearSrcSetOnError !== false
     });
-  }
-
-  function mountImageWhenReady(container, img, options = {}) {
-    const isCurrent = typeof options.isCurrent === "function" ? options.isCurrent : () => true;
-    const onFailure = typeof options.onFailure === "function" ? options.onFailure : null;
-
-    const commit = () => {
-      if (!isCurrent()) {
-        return;
-      }
-      container.innerHTML = "";
-      container.appendChild(img);
-    };
-
-    const fail = () => {
-      if (!isCurrent()) {
-        return;
-      }
-      if (onFailure) {
-        onFailure();
-      }
-    };
-
-    if (img.complete) {
-      if (img.naturalWidth > 0) {
-        commit();
-      } else if (onFailure) {
-        fail();
-      }
-      return;
-    }
-
-    img.addEventListener(
-      "load",
-      () => {
-        commit();
-      },
-      { once: true }
-    );
   }
 
   function buildSrcSet(project, photo, variant = "main") {
@@ -722,10 +680,10 @@
       title: "Home"
     };
     const homeImage = state.homePhotos[state.homePhotoIndex];
-    const renderToken = ++state.homeRenderToken;
+
+    homePreview.innerHTML = "";
 
     if (!homeImage) {
-      homePreview.innerHTML = "";
       if (!state.homeLoaded) {
         homePreview.innerHTML = "<p></p>";
         return;
@@ -749,17 +707,7 @@
       img.height = homeImage.height;
     }
     setImagePerformanceAttributes(img, { loading: "eager", fetchpriority: "high" });
-    if (!homePreview.querySelector("img")) {
-      homePreview.innerHTML = "<p></p>";
-    }
-    mountImageWhenReady(homePreview, img, {
-      isCurrent: () => state.homeRenderToken === renderToken,
-      onFailure: () => {
-        if (!homePreview.querySelector("img")) {
-          homePreview.innerHTML = "<p>No se pudo cargar la imagen.</p>";
-        }
-      }
-    });
+    homePreview.appendChild(img);
   }
 
   async function renderProject() {
@@ -798,21 +746,13 @@
     }
 
     const currentPhoto = photos[state.selectedPhotoIndex];
-    const renderToken = ++state.projectRenderToken;
     projectFrame.className = `frame frame-${currentPhoto.frame || project.defaultFrame || "center"}`;
+    projectFrame.innerHTML = "";
 
     const img = document.createElement("img");
     applyResponsiveSources(img, project, currentPhoto, {
       variant: "main",
-      sizes: MAIN_IMAGE_SIZES,
-      onExhausted: () => {
-        if (state.projectRenderToken !== renderToken || state.selectedProject?.id !== project.id) {
-          return;
-        }
-        if (!projectFrame.querySelector("img")) {
-          projectFrame.innerHTML = "<p>No se pudo cargar la imagen.</p>";
-        }
-      }
+      sizes: MAIN_IMAGE_SIZES
     });
     img.alt = currentPhoto.alt || project.title;
     if (currentPhoto.width) {
@@ -825,17 +765,7 @@
       loading: "eager",
       fetchpriority: state.selectedPhotoIndex === 0 ? "high" : "auto"
     });
-    if (!projectFrame.querySelector("img")) {
-      projectFrame.innerHTML = "<p></p>";
-    }
-    mountImageWhenReady(projectFrame, img, {
-      isCurrent: () => state.projectRenderToken === renderToken && state.selectedProject?.id === project.id,
-      onFailure: () => {
-        if (!projectFrame.querySelector("img")) {
-          projectFrame.innerHTML = "<p>No se pudo cargar la imagen.</p>";
-        }
-      }
-    });
+    projectFrame.appendChild(img);
 
     renderAllGrid(photos);
     allBtn.textContent = state.allMode ? "CLOSE" : "ALL";
@@ -1066,7 +996,6 @@
     }
 
     const shouldClearSrcSetOnError = options.clearSrcSetOnError !== false;
-    const onExhausted = typeof options.onExhausted === "function" ? options.onExhausted : null;
     let index = 0;
     img.onerror = () => {
       index += 1;
@@ -1079,9 +1008,6 @@
         return;
       }
       img.onerror = null;
-      if (onExhausted) {
-        onExhausted();
-      }
     };
     img.src = candidates[index].src;
   }

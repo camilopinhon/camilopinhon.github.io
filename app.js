@@ -695,6 +695,9 @@
     }
 
     const img = document.createElement("img");
+      img.addEventListener("load", () => {
+        img.classList.add("is-ready");
+      }, { once: true });
     applyResponsiveSources(img, homeProject, homeImage, {
       variant: "thumb",
       sizes: "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc(100vw - 32px), 640px"
@@ -750,6 +753,9 @@
     projectFrame.innerHTML = "";
 
     const img = document.createElement("img");
+      img.addEventListener("load", () => {
+        img.classList.add("is-ready");
+      }, { once: true });
     applyResponsiveSources(img, project, currentPhoto, {
       variant: "main",
       sizes: MAIN_IMAGE_SIZES
@@ -829,6 +835,9 @@
         const img = document.createElement("img");
         img.classList.add("grid-img-pending");
         img.__lazyLoad = () => {
+          img.addEventListener("load", () => {
+            img.classList.add("is-ready");
+          }, { once: true });
           applyResponsiveSources(img, state.selectedProject, photo, {
             variant: "thumb",
             sizes: getGridSizes(photo),
@@ -989,7 +998,10 @@
   }
 
   function setImageSource(img, project, photo, variant = "main", options = {}) {
-    const candidates = buildFallbackCandidates(project, photo, { variant });
+    const responsiveCandidates = buildPhotoCandidates(project, photo, { variant });
+    const fallbackCandidates = buildFallbackCandidates(project, photo, { variant });
+    const candidates = dedupeCandidates([...responsiveCandidates, ...fallbackCandidates]);
+
     if (!candidates.length) {
       img.removeAttribute("src");
       return;
@@ -997,6 +1009,7 @@
 
     const shouldClearSrcSetOnError = options.clearSrcSetOnError !== false;
     let index = 0;
+
     img.onerror = () => {
       index += 1;
       if (index < candidates.length) {
@@ -1009,9 +1022,9 @@
       }
       img.onerror = null;
     };
-    img.src = candidates[index].src;
-  }
 
+  img.src = candidates[index].src;
+}
   function buildFallbackCandidates(project, photo, options = {}) {
     const variant = options.variant || "main";
     if (photo?.src) {

@@ -148,10 +148,27 @@ function buildPhotoEntry(folder, fileName) {
 
   const mainSources = {};
   for (const mainWidth of MAIN_WIDTHS) {
-    if (maxDimension <= mainWidth) {
-      mainSources[mainWidth] = toPosixRelative(sourcePath);
-      continue;
-    }
+    const mainSources = {};
+
+for (const requestedWidth of MAIN_WIDTHS) {
+  const effectiveWidth = Math.min(requestedWidth, maxDimension);
+
+  if (mainSources[effectiveWidth]) {
+    continue;
+  }
+
+  const targetPath = path.join(
+    DERIVED_DIR,
+    "main",
+    folder,
+    buildDerivedName(fileName, effectiveWidth)
+  );
+
+  const generated = generateJpegVariant(sourcePath, targetPath, effectiveWidth, "main");
+  mainSources[effectiveWidth] = generated
+    ? toPosixRelative(targetPath)
+    : toPosixRelative(sourcePath);
+}
 
     const targetPath = path.join(DERIVED_DIR, "main", folder, buildDerivedName(fileName, mainWidth));
     const generated = generateJpegVariant(sourcePath, targetPath, mainWidth, "main");

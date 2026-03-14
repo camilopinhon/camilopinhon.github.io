@@ -997,34 +997,35 @@
     return `images/${folder}/${encodePathSegment(fileName)}`;
   }
 
-  function setImageSource(img, project, photo, variant = "main", options = {}) {
-    const responsiveCandidates = buildPhotoCandidates(project, photo, { variant });
-    const fallbackCandidates = buildFallbackCandidates(project, photo, { variant });
-    const candidates = dedupeCandidates([...responsiveCandidates, ...fallbackCandidates]);
+function setImageSource(img, project, photo, variant = "main", options = {}) {
+  const responsiveCandidates = buildPhotoCandidates(project, photo, { variant });
+  const fallbackCandidates = buildFallbackCandidates(project, photo, { variant });
+  const candidates = dedupeCandidates([...responsiveCandidates, ...fallbackCandidates]);
 
-    if (!candidates.length) {
-      img.removeAttribute("src");
+  if (!candidates.length) {
+    img.removeAttribute("src");
+    return;
+  }
+
+  const shouldClearSrcSetOnError = options.clearSrcSetOnError !== false;
+  let index = 0;
+
+  img.onerror = () => {
+    index += 1;
+    if (index < candidates.length) {
+      if (shouldClearSrcSetOnError) {
+        img.removeAttribute("srcset");
+        img.removeAttribute("sizes");
+      }
+      img.src = candidates[index].src;
       return;
     }
-
-    const shouldClearSrcSetOnError = options.clearSrcSetOnError !== false;
-    let index = 0;
-
-    img.onerror = () => {
-      index += 1;
-      if (index < candidates.length) {
-        if (shouldClearSrcSetOnError) {
-          img.removeAttribute("srcset");
-          img.removeAttribute("sizes");
-        }
-        img.src = candidates[index].src;
-        return;
-      }
-      img.onerror = null;
-    };
+    img.onerror = null;
+  };
 
   img.src = candidates[index].src;
 }
+
   function buildFallbackCandidates(project, photo, options = {}) {
     const variant = options.variant || "main";
     if (photo?.src) {
@@ -1063,53 +1064,58 @@
     return dedupeCandidates(candidates);
   }
 
-  function buildPhotoCandidates(project, photo, options = {}) {
-    const variant = options.variant || "main";
-    if (photo?.src) {
-      return [{ src: photo.src, width: Number(photo.width) || 0 }];
-    }
+ function buildPhotoCandidates(project, photo, options = {}) {
+  const variant = options.variant || "main";
+  if (photo?.src) {
+    return [{ src: photo.src, width: Number(photo.width) || 0 }];
+  }
 
-    const fileName = photo?.file || "";
-    const folder = project?.imageFolder || project?.id || "";
-    if (!fileName || !folder) {
-      return [];
-    }
+  const manifestSources = photo?.sources;
+  const candidates = [];
 
-    const manifestSources = photo?.sources;
-    const candidates = [];
-    if (variant === "thumb" && typeof manifestSources?.thumb === "string") {
-      candidates.push({ src: manifestSources.thumb, width: 640 });
-    }
-    if (manifestSources?.main && typeof manifestSources.main === "object") {
-      Object.entries(manifestSources.main).forEach(([width, src]) => {
-        if (typeof src === "string") {
-          candidates.push({ src, width: Number(width) || 0 });
-        }
-      });
-    }
+  if (variant === "thumb" && typeof manifestSources?.thumb === "string") {
+    candidates.push({ src: manifestSources.thumb, width: 640 });
+  }
 
-    const encodedFile = encodePathSegment(fileName);
-    const encodedFolder = encodePathSegment(folder);
-    const localEncoded = `images/${encodedFolder}/${encodedFile}`;
-    const localRaw = `images/${folder}/${fileName}`;
-    const maxDeclaredWidth = Number(photo?.width) || 0;
-    candidates.push({ src: localEncoded, width: maxDeclaredWidth });
-    if (localRaw !== localEncoded) {
-      candidates.push({ src: localRaw, width: maxDeclaredWidth });
-    }
+  if (manifestSources?.main && typeof manifestSources.main === "object") {
+    Object.entries(manifestSources.main).forEach(([width, src]) => {
+      if (typeof src === "string") {
+        candidates.push({ src, width: Number(width) || 0 });
+      }
+    });
+  }
 
-    const repoInfo = resolveGitHubRepoInfo();
-    if (repoInfo) {
-      candidates.push(
-        {
-          src: `https://raw.githubusercontent.com/${repoInfo.owner}/${repoInfo.repo}/${repoInfo.branch}/images/${encodedFolder}/${encodedFile}`,
-          width: maxDeclaredWidth
-        }
-      );
-    }
-
+  if (candidates.length) {
     return dedupeCandidates(candidates);
   }
+
+  const fileName = photo?.file || "";
+  const folder = project?.imageFolder || project?.id || "";
+  if (!fileName || !folder) {
+    return [];
+  }
+
+  const encodedFile = encodePathSegment(fileName);
+  const encodedFolder = encodePathSegment(folder);
+  const localEncoded = `images/${encodedFolder}/${encodedFile}`;
+  const localRaw = `images/${folder}/${fileName}`;
+  const maxDeclaredWidth = Number(photo?.width) || 0;
+
+  const fallback = [{ src: localEncoded, width: maxDeclaredWidth }];
+  if (localRaw !== localEncoded) {
+    fallback.push({ src: localRaw, width: maxDeclaredWidth });
+  }
+
+  const repoInfo = resolveGitHubRepoInfo();
+  if (repoInfo) {
+    fallback.push({
+      src: `https://raw.githubusercontent.com/${repoInfo.owner}/${repoInfo.repo}/${repoInfo.branch}/images/${encodedFolder}/${encodedFile}`,
+      width: maxDeclaredWidth
+    });
+  }
+
+  return dedupeCandidates(fallback);
+}
 
   function dedupeCandidates(candidates) {
     const deduped = [];

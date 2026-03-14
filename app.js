@@ -144,18 +144,54 @@
   }
 
   function applyResponsiveSources(img, project, photo, options = {}) {
-    const srcset = buildSrcSet(project, photo, options.variant);
-    if (srcset) {
-      img.srcset = srcset;
-      img.sizes = options.sizes || MAIN_IMAGE_SIZES;
-    } else {
+    if (Number(options.preferredWidth) > 0) {
       img.removeAttribute("srcset");
       img.removeAttribute("sizes");
+    } else {
+      const srcset = buildSrcSet(project, photo, options.variant);
+      if (srcset) {
+        img.srcset = srcset;
+        img.sizes = options.sizes || MAIN_IMAGE_SIZES;
+      } else {
+        img.removeAttribute("srcset");
+        img.removeAttribute("sizes");
+      }
     }
     setImageSource(img, project, photo, options.variant, {
       clearSrcSetOnError: options.clearSrcSetOnError !== false,
-      onExhausted: options.onExhausted
+      onExhausted: options.onExhausted,
+      preferredWidth: options.preferredWidth
     });
+  }
+
+  function getEffectiveDevicePixelRatio() {
+    return Math.min(window.devicePixelRatio || 1, 2);
+  }
+
+  function getMainPreferredWidth() {
+    const viewportWidth = window.innerWidth || 1000;
+    const pixelRatio = getEffectiveDevicePixelRatio();
+
+    if (viewportWidth <= 640) {
+      return Math.ceil(Math.max(viewportWidth - 28, 1) * pixelRatio);
+    }
+    if (viewportWidth <= 920) {
+      return Math.ceil(Math.max(viewportWidth - 32, 1) * pixelRatio);
+    }
+    return Math.ceil(1000 * pixelRatio);
+  }
+
+  function getHomePreferredWidth() {
+    const viewportWidth = window.innerWidth || 640;
+    const pixelRatio = getEffectiveDevicePixelRatio();
+
+    if (viewportWidth <= 640) {
+      return Math.ceil(Math.max(viewportWidth - 28, 1) * pixelRatio);
+    }
+    if (viewportWidth <= 920) {
+      return Math.ceil(Math.max(viewportWidth - 32, 1) * pixelRatio);
+    }
+    return Math.ceil(640 * pixelRatio);
   }
 
   function mountImageWhenReady(container, img, options = {}) {
@@ -739,7 +775,8 @@
     const img = document.createElement("img");
     applyResponsiveSources(img, homeProject, homeImage, {
       variant: "thumb",
-      sizes: "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc(100vw - 32px), 640px"
+      sizes: "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc(100vw - 32px), 640px",
+      preferredWidth: getHomePreferredWidth()
     });
     img.alt = homeImage.alt || "Home";
     if (homeImage.width) {
@@ -805,6 +842,7 @@
     applyResponsiveSources(img, project, currentPhoto, {
       variant: "main",
       sizes: MAIN_IMAGE_SIZES,
+      preferredWidth: getMainPreferredWidth(),
       onExhausted: () => {
         if (state.projectRenderToken !== renderToken || state.selectedProject?.id !== project.id) {
           return;
@@ -1059,7 +1097,10 @@
   }
 
   function setImageSource(img, project, photo, variant = "main", options = {}) {
-    const candidates = buildFallbackCandidates(project, photo, { variant });
+    const candidates = buildFallbackCandidates(project, photo, {
+      variant,
+      preferredWidth: options.preferredWidth
+    });
     if (!candidates.length) {
       img.removeAttribute("src");
       return;
@@ -1093,6 +1134,13 @@
     }
 
     const candidates = [];
+    const preferredCandidate = pickPreferredCandidate(project, photo, {
+      variant,
+      preferredWidth: options.preferredWidth
+    });
+    if (preferredCandidate) {
+      candidates.push(preferredCandidate);
+    }
     const primarySrc = resolvePhotoSrc(project, photo);
     if (primarySrc) {
       candidates.push({ src: primarySrc, width: Number(photo?.width) || 0 });
@@ -1122,6 +1170,23 @@
     }
 
     return dedupeCandidates(candidates);
+  }
+
+  function pickPreferredCandidate(project, photo, options = {}) {
+    const preferredWidth = Number(options.preferredWidth) || 0;
+    if (preferredWidth <= 0) {
+      return null;
+    }
+
+    const candidates = buildPhotoCandidates(project, photo, { variant: options.variant || "main" })
+      .filter((candidate) => candidate.width > 0)
+      .sort((a, b) => a.width - b.width);
+
+    if (!candidates.length) {
+      return null;
+    }
+
+    return candidates.find((candidate) => candidate.width >= preferredWidth) || candidates[candidates.length - 1];
   }
 
   function buildPhotoCandidates(project, photo, options = {}) {

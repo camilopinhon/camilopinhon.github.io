@@ -556,14 +556,9 @@
         .map((photo) => [photo.file, photo])
     );
 
-    const liveFiles = manifestPhotos.length
-      ? []
-      : await listImagesFromFolder(project).then((folderFiles) => {
-          if (folderFiles.length) {
-            return folderFiles;
-          }
-          return listImagesFromGitHub(project, repoInfo);
-        });
+    const folderFiles = await listImagesFromFolder(project);
+    const githubFiles = folderFiles.length ? [] : await listImagesFromGitHub(project, repoInfo);
+    const liveFiles = folderFiles.length ? folderFiles : githubFiles;
     const detectedPhotos = liveFiles.length
       ? liveFiles.map((file) => mergePhotoMetadata({ file }, manifestByFile.get(file)))
       : manifestPhotos;
@@ -1159,6 +1154,15 @@
         candidates.push({ src: localRaw, width: Number(photo?.width) || 0 });
       }
 
+      const repoInfo = resolveGitHubRepoInfo();
+      if (repoInfo) {
+        const encodedFile = encodePathSegment(fileName);
+        const encodedFolder = encodePathSegment(folder);
+        candidates.push({
+          src: `https://raw.githubusercontent.com/${repoInfo.owner}/${repoInfo.repo}/${repoInfo.branch}/images/${encodedFolder}/${encodedFile}`,
+          width: Number(photo?.width) || 0
+        });
+      }
     }
 
     if (variant === "thumb" && typeof photo?.sources?.thumb === "string") {
@@ -1219,6 +1223,17 @@
     if (localRaw !== localEncoded) {
       candidates.push({ src: localRaw, width: maxDeclaredWidth });
     }
+
+    const repoInfo = resolveGitHubRepoInfo();
+    if (repoInfo) {
+      candidates.push(
+        {
+          src: `https://raw.githubusercontent.com/${repoInfo.owner}/${repoInfo.repo}/${repoInfo.branch}/images/${encodedFolder}/${encodedFile}`,
+          width: maxDeclaredWidth
+        }
+      );
+    }
+
     return dedupeCandidates(candidates);
   }
 

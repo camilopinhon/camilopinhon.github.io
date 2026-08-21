@@ -66,3 +66,16 @@ Requisitos:
 
 - macOS (usa `sips` para comprimir).
 - Permisos de ejecucion (`chmod +x .githooks/pre-commit` ya esta aplicado en el repo, pero verifica tras clonar).
+
+## Generar el sitio de produccion
+
+El sitio usa `images/manifest.json` como fuente de imagenes en produccion. Despues de anadir o quitar fotos, regenera el manifiesto y crea `dist/`:
+
+```bash
+node scripts/build-image-manifest.mjs
+node scripts/build-site.mjs
+```
+
+Publica el contenido de `dist/`. Incluye las variantes responsive y conserva la calidad visual, pero no copia los originales de alta resolucion innecesarios para el navegador.
+
+Durante el desarrollo local, la web sigue detectando directamente las fotos nuevas de las carpetas `images/`.

@@ -6,6 +6,11 @@
 
   const IMAGE_EXT_REGEX = /\.(avif|jpe?g|png|webp|gif)$/i;
   const isFileProtocol = window.location.protocol === "file:";
+  const isLocalDevelopment =
+    isFileProtocol ||
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === "[::1]";
   const MAIN_IMAGE_SIZES =
     "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc(100vw - 32px), 1000px";
   const GRID_IMAGE_SIZES = {
@@ -67,10 +72,6 @@
     });
   });
 
-  if (state.selectedProject) {
-    ensureProjectPhotosLoaded(state.selectedProject);
-  }
-
   async function loadImageManifest() {
     try {
       const response = await fetchWithTimeout("images/manifest.json");
@@ -126,6 +127,11 @@
         height: Number(photo.height) || undefined,
         sources: normalizePhotoSources(photo.sources)
       }));
+  }
+
+  function hasManifestProject(project) {
+    const folder = project?.imageFolder || project?.id;
+    return Boolean(folder && Array.isArray(state.imageManifest?.projects?.[folder]));
   }
 
   function normalizePhotoSources(sources) {
@@ -543,12 +549,18 @@
         .map((photo) => [photo.file, photo])
     );
 
-    const folderFiles = await listImagesFromFolder(project);
-    const githubFiles = folderFiles.length ? [] : await listImagesFromGitHub(project, repoInfo);
-    const liveFiles = folderFiles.length ? folderFiles : githubFiles;
-    const detectedPhotos = liveFiles.length
-      ? liveFiles.map((file) => mergePhotoMetadata({ file }, manifestByFile.get(file)))
-      : manifestPhotos;
+    // The generated manifest is authoritative in production. Local previews
+    // keep directory discovery so newly added photos remain visible before the
+    // manifest is regenerated.
+    let detectedPhotos = manifestPhotos;
+    if (isLocalDevelopment || !hasManifestProject(project)) {
+      const folderFiles = await listImagesFromFolder(project);
+      const githubFiles = folderFiles.length ? [] : await listImagesFromGitHub(project, repoInfo);
+      const liveFiles = folderFiles.length ? folderFiles : githubFiles;
+      detectedPhotos = liveFiles.length
+        ? liveFiles.map((file) => mergePhotoMetadata({ file }, manifestByFile.get(file)))
+        : manifestPhotos;
+    }
 
     const manualPhotos = Array.isArray(project.photos) ? project.photos : [];
     const manualByFile = new Map(

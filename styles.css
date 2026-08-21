@@ -94,6 +94,22 @@ body {
   color: var(--muted);
 }
 
+.brand:focus-visible,
+.menu-link:focus-visible,
+.control-btn:focus-visible,
+.grid-card-button:focus-visible,
+#home-preview:focus-visible,
+#contact-email:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+#home-title:focus-visible,
+#project-title:focus-visible,
+#contact-title:focus-visible {
+  outline: none;
+}
+
 .secondary-nav {
   margin-top: 8px;
   gap: 14px;
@@ -223,9 +239,34 @@ body {
   display: block;
 }
 
+.grid-card-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
 .grid-card img.grid-img-pending {
   min-height: 140px;
   background: #efefef;
+}
+
+.image-error,
+.menu-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.project-title,
+#contact-view h2 {
+  overflow-wrap: anywhere;
 }
 
 #contact-view h2 {
@@ -294,8 +335,11 @@ body {
     position: static;
     border-right: 0;
     border-bottom: 1px solid var(--line);
-    padding: 22px 16px 18px;
-    gap: 16px;
+    padding-top: max(22px, env(safe-area-inset-top));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+    padding-left: max(16px, env(safe-area-inset-left));
+    gap: 12px;
   }
 
   .brand {
@@ -311,6 +355,8 @@ body {
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 4px;
+    scroll-padding-inline: 16px;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -322,11 +368,16 @@ body {
 
   .menu-link {
     font-size: 14px;
-    padding: 8px 0;
+    min-height: 44px;
+    padding: 12px 0;
+    flex: 0 0 auto;
   }
 
   .content {
-    padding: 20px 16px 34px;
+    padding-top: 20px;
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-bottom: max(34px, env(safe-area-inset-bottom));
+    padding-left: max(16px, env(safe-area-inset-left));
   }
 
   .frame img,
@@ -340,6 +391,23 @@ body {
   #home-preview img.is-ready,
   .grid-card img.is-ready {
     opacity: 1;
+  }
+
+  #home-preview,
+  #project-frame {
+    position: relative;
+  }
+
+  #home-preview:has(img:not(.is-ready):not(.is-error))::after,
+  #project-frame:has(img:not(.is-ready):not(.is-error))::after {
+    content: "Cargando fotografía…";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    pointer-events: none;
   }
 
   .all-grid {
@@ -376,7 +444,10 @@ body {
 
 @media (max-width: 640px) {
   .content {
-    padding: 18px 14px 28px;
+    padding-top: 18px;
+    padding-right: max(14px, env(safe-area-inset-right));
+    padding-bottom: max(28px, env(safe-area-inset-bottom));
+    padding-left: max(14px, env(safe-area-inset-left));
   }
 
   .home-intro {
@@ -407,11 +478,56 @@ body {
   }
 
   .control-btn {
-    min-width: 56px;
+    min-width: 64px;
+    min-height: 44px;
+    padding: 12px 8px;
   }
 
   .all-grid {
     margin-top: 18px;
     grid-template-columns: 1fr;
+  }
+}
+
+@media (pointer: coarse) and (min-width: 921px) {
+  .menu-link {
+    min-height: 44px;
+    padding-block: 12px;
+  }
+
+  .control-btn {
+    min-height: 44px;
+    padding: 12px 8px;
+  }
+}
+
+@media (max-width: 920px) and (orientation: landscape) {
+  .sidebar {
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: 12px;
+    gap: 8px;
+  }
+
+  .brand {
+    font-size: 28px;
+    gap: 4px;
+  }
+
+  .project-nav,
+  .secondary-nav {
+    gap: 8px;
+  }
+
+  .content {
+    padding-top: 14px;
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+  }
+
+  .frame {
+    min-height: min(54vh, 260px);
+  }
+
+  .frame img {
+    max-height: 72vh;
   }
 }

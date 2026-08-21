@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>PORTFOLIO</title>
     <link rel="stylesheet" href="styles.css" />
     <!-- Google tag (gtag.js) -->
@@ -27,40 +27,53 @@
 
         <nav id="project-nav" class="project-nav" aria-label="Proyectos"></nav>
 
-        <div class="secondary-nav">
-          <button class="menu-link" data-action="home">HOME</button>
-          <button class="menu-link" data-action="contact">CONTACT</button>
-          <a id="instagram-link" class="menu-link" href="#" target="_blank" rel="noreferrer">INSTAGRAM</a>
-        </div>
+        <nav class="secondary-nav" aria-label="Navegación secundaria">
+          <button class="menu-link" data-action="home">PORTADA</button>
+          <button class="menu-link" data-action="contact">CONTACTO</button>
+          <a id="instagram-link" class="menu-link" href="#" target="_blank" rel="noreferrer noopener">INSTAGRAM</a>
+        </nav>
       </aside>
 
       <main class="content">
         <section id="home-view" class="view is-active" aria-labelledby="home-title">
-          <h1 id="home-title" class="sr-only">Home</h1>
+          <h1 id="home-title" class="sr-only" tabindex="-1">Portada</h1>
           <div class="home-intro">
             <p class="home-kicker">PORTFOLIO</p>
             <p class="home-text"></p>
           </div>
-          <div id="home-preview" class="frame frame-center"></div>
+          <div
+            id="home-preview"
+            class="frame frame-center"
+            role="button"
+            tabindex="0"
+            aria-label="Cambiar fotografía de portada"
+            aria-describedby="view-status"
+          ></div>
         </section>
 
         <section id="project-view" class="view" aria-labelledby="project-title">
-          <h2 id="project-title" class="project-title"></h2>
+          <h2 id="project-title" class="project-title" tabindex="-1"></h2>
 
           <div id="project-frame" class="frame frame-center"></div>
 
           <div class="controls">
-            <button id="prev-btn" class="control-btn" type="button">PREV</button>
+            <button id="prev-btn" class="control-btn" type="button">ANTERIOR</button>
             <span class="separator">|</span>
-            <button id="next-btn" class="control-btn" type="button">NEXT</button>
-            <button id="all-btn" class="control-btn" type="button">ALL</button>
+            <button id="next-btn" class="control-btn" type="button">SIGUIENTE</button>
+            <button
+              id="all-btn"
+              class="control-btn"
+              type="button"
+              aria-controls="all-grid"
+              aria-expanded="false"
+            >TODAS</button>
           </div>
 
-          <div id="all-grid" class="all-grid" hidden></div>
+          <div id="all-grid" class="all-grid" aria-label="Todas las fotografías" hidden></div>
         </section>
 
         <section id="contact-view" class="view" aria-labelledby="contact-title">
-          <h2 id="contact-title">CONTACT</h2>
+          <h2 id="contact-title" tabindex="-1">CONTACTO</h2>
           <div class="contact-card">
             <div class="contact-photo">
               <img
@@ -78,6 +91,8 @@
             </div>
           </div>
         </section>
+
+        <p id="view-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
       </main>
     </div>
 

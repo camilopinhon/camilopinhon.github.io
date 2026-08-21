@@ -147,32 +147,33 @@ function buildPhotoEntry(folder, fileName) {
   const maxDimension = Math.max(width, height);
 
   const mainSources = {};
-  for (const mainWidth of MAIN_WIDTHS) {
-    const mainSources = {};
+  for (const requestedMaxDimension of MAIN_WIDTHS) {
+    const maxOutputDimension = Math.min(requestedMaxDimension, maxDimension);
+    const outputWidth = Math.min(
+      width,
+      Math.round((width * maxOutputDimension) / maxDimension)
+    );
 
-for (const requestedWidth of MAIN_WIDTHS) {
-  const effectiveWidth = Math.min(requestedWidth, maxDimension);
+    if (mainSources[outputWidth]) {
+      continue;
+    }
 
-  if (mainSources[effectiveWidth]) {
-    continue;
-  }
-
-  const targetPath = path.join(
-    DERIVED_DIR,
-    "main",
-    folder,
-    buildDerivedName(fileName, effectiveWidth)
-  );
-
-  const generated = generateJpegVariant(sourcePath, targetPath, effectiveWidth, "main");
-  mainSources[effectiveWidth] = generated
-    ? toPosixRelative(targetPath)
-    : toPosixRelative(sourcePath);
-}
-
-    const targetPath = path.join(DERIVED_DIR, "main", folder, buildDerivedName(fileName, mainWidth));
-    const generated = generateJpegVariant(sourcePath, targetPath, mainWidth, "main");
-    mainSources[mainWidth] = generated ? toPosixRelative(targetPath) : toPosixRelative(sourcePath);
+    const targetPath = path.join(
+      DERIVED_DIR,
+      "main",
+      folder,
+      buildDerivedName(fileName, maxOutputDimension)
+    );
+    const generated = generateJpegVariant(
+      sourcePath,
+      targetPath,
+      maxOutputDimension,
+      "main"
+    );
+    const sourceWidth = generated ? outputWidth : width;
+    mainSources[sourceWidth] = generated
+      ? toPosixRelative(targetPath)
+      : toPosixRelative(sourcePath);
   }
 
   let thumbSource = toPosixRelative(sourcePath);
@@ -191,6 +192,22 @@ for (const requestedWidth of MAIN_WIDTHS) {
       thumb: thumbSource
     }
   };
+}
+
+function validateManifest(manifest) {
+  for (const [folder, photos] of Object.entries(manifest.projects)) {
+    for (const photo of photos) {
+      const sources = [...Object.values(photo.sources.main), photo.sources.thumb];
+      if (!Object.keys(photo.sources.main).length || sources.some((source) => !source)) {
+        fail(`Manifest incompleto: ${folder}/${photo.file}`);
+      }
+      for (const source of sources) {
+        if (!fs.existsSync(path.join(ROOT_DIR, source))) {
+          fail(`Fuente inexistente en manifest: ${source}`);
+        }
+      }
+    }
+  }
 }
 
 function main() {
@@ -212,6 +229,8 @@ function main() {
     const files = listImageFiles(folderPath);
     manifest.projects[folder] = files.map((fileName) => buildPhotoEntry(folder, fileName));
   }
+
+  validateManifest(manifest);
 
   const outputPath = path.join(IMAGES_DIR, "manifest.json");
   fs.writeFileSync(outputPath, `${JSON.stringify(manifest, null, 2)}\n`);

@@ -33,6 +33,8 @@
   const contactName = document.getElementById("contact-name");
   const contactEmail = document.getElementById("contact-email");
   const contactLocation = document.getElementById("contact-location");
+  const viewStatus = document.getElementById("view-status");
+  const REQUEST_TIMEOUT_MS = 8000;
 
   const state = {
     selectedProject: null,
@@ -44,6 +46,7 @@
     projectLoadPromises: new Map(),
     loadedProjects: new Set(),
     imageManifest: null,
+    manifestError: null,
     githubImageIndex: null,
     githubImageIndexPromise: null,
     gridImageObserver: null
@@ -53,10 +56,12 @@
   renderProjectMenu();
   bindGlobalActions();
   bindTouchGestures();
-  showView("home");
+  showView("home", { focus: false });
   renderHomePreview();
 
-  loadImageManifest().finally(() => {
+  const imageManifestReady = loadImageManifest();
+
+  imageManifestReady.finally(() => {
     hydrateHomePhotosFromFolder().finally(() => {
       renderHomePreview();
     });
@@ -68,19 +73,38 @@
 
   async function loadImageManifest() {
     try {
-      const response = await fetch("images/manifest.json");
+      const response = await fetchWithTimeout("images/manifest.json");
       if (!response.ok) {
         state.imageManifest = null;
+        state.manifestError = `No se pudo cargar el manifiesto (${response.status}).`;
         return;
       }
       const manifest = await response.json();
       if (!manifest || typeof manifest !== "object" || typeof manifest.projects !== "object") {
         state.imageManifest = null;
+        state.manifestError = "El manifiesto de imágenes no es válido.";
         return;
       }
       state.imageManifest = manifest;
+      state.manifestError = null;
     } catch (_error) {
       state.imageManifest = null;
+      state.manifestError = "No se pudo cargar el manifiesto de imágenes.";
+    }
+  }
+
+  async function fetchWithTimeout(url, options = {}) {
+    if (typeof AbortController === "undefined") {
+      return fetch(url, options);
+    }
+
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      window.clearTimeout(timeoutId);
     }
   }
 
@@ -151,7 +175,8 @@
       img.removeAttribute("sizes");
     }
     setImageSource(img, project, photo, options.variant, {
-      clearSrcSetOnError: options.clearSrcSetOnError !== false
+      clearSrcSetOnError: options.clearSrcSetOnError !== false,
+      onError: options.onError
     });
   }
 
@@ -206,7 +231,7 @@
       const homeProject = {
         id: "home",
         imageFolder: data?.home?.imageFolder || "home",
-        title: "Home",
+        title: "Portada",
         photos: []
       };
 
@@ -230,28 +255,47 @@
       brand.innerHTML = `<span>${escapeHtml(data.siteTitle[0])}</span><span>${escapeHtml(data.siteTitle[1])}</span>`;
     }
 
-    instagramLink.href = data.instagramUrl || "#";
+    const instagramUrl = typeof data.instagramUrl === "string" ? data.instagramUrl.trim() : "";
+    if (/^https?:\/\//i.test(instagramUrl)) {
+      instagramLink.href = instagramUrl;
+    } else {
+      instagramLink.hidden = true;
+    }
 
     contactName.textContent = data.contact?.name || "";
-    contactEmail.textContent = data.contact?.email || "";
-    contactEmail.href = `mailto:${data.contact?.email || ""}`;
+    const email = typeof data.contact?.email === "string" ? data.contact.email.trim() : "";
+    contactEmail.textContent = email;
+    if (email) {
+      contactEmail.href = `mailto:${email}`;
+    } else {
+      contactEmail.closest("p")?.setAttribute("hidden", "");
+    }
     contactLocation.textContent = data.contact?.location || "";
   }
 
   function renderProjectMenu() {
     projectNav.innerHTML = "";
-    data.projects.forEach((project, idx) => {
+    const projects = Array.isArray(data.projects)
+      ? data.projects.filter((project) => project?.id && project?.title)
+      : [];
+
+    if (!projects.length) {
+      projectNav.innerHTML = '<p class="menu-empty">No hay proyectos disponibles.</p>';
+      return;
+    }
+
+    projects.forEach((project, idx) => {
       const btn = document.createElement("button");
       btn.className = "menu-link";
       btn.type = "button";
       btn.textContent = project.title;
       btn.dataset.projectId = project.id;
+      btn.setAttribute("aria-controls", "project-view");
       btn.addEventListener("click", () => {
         state.selectedProject = project;
         state.selectedPhotoIndex = 0;
         state.allMode = false;
-        showView("project");
-        renderProject();
+        showView("project", { focus: true });
       });
 
       projectNav.appendChild(btn);
@@ -266,12 +310,12 @@
     document.querySelectorAll("[data-action='home']").forEach((el) => {
       el.addEventListener("click", (event) => {
         event.preventDefault();
-        showView("home");
+        showView("home", { focus: true });
       });
     });
 
     document.querySelector("[data-action='contact']")?.addEventListener("click", () => {
-      showView("contact");
+      showView("contact", { focus: true });
     });
 
     prevBtn.addEventListener("click", () => {
@@ -285,6 +329,14 @@
     allBtn.addEventListener("click", () => {
       state.allMode = !state.allMode;
       renderProject();
+    });
+
+    homePreview.addEventListener("keydown", (event) => {
+      if ((event.key !== "Enter" && event.key !== " ") || !state.homePhotos.length) {
+        return;
+      }
+      event.preventDefault();
+      rotateHome(1);
     });
 
     document.addEventListener("keydown", (event) => {
@@ -392,8 +444,8 @@
       return;
     }
 
-    let touchStartX = 0;
-    let touchStartY = 0;
+    let touchStartX = null;
+    let touchStartY = null;
 
     container.addEventListener(
       "touchstart",
@@ -411,9 +463,14 @@
     container.addEventListener(
       "touchend",
       (event) => {
-        if (!handlers.isEnabled() || !touchStartX || !touchStartY || event.changedTouches.length !== 1) {
-          touchStartX = 0;
-          touchStartY = 0;
+        if (
+          !handlers.isEnabled() ||
+          touchStartX === null ||
+          touchStartY === null ||
+          event.changedTouches.length !== 1
+        ) {
+          touchStartX = null;
+          touchStartY = null;
           return;
         }
 
@@ -421,8 +478,8 @@
         const deltaX = touch.clientX - touchStartX;
         const deltaY = touch.clientY - touchStartY;
 
-        touchStartX = 0;
-        touchStartY = 0;
+        touchStartX = null;
+        touchStartY = null;
 
         if (Math.abs(deltaX) < 44 || Math.abs(deltaY) > 72 || Math.abs(deltaX) < Math.abs(deltaY)) {
           return;
@@ -443,6 +500,8 @@
       return;
     }
 
+    await imageManifestReady;
+
     if (state.loadedProjects.has(project.id)) {
       return;
     }
@@ -454,9 +513,15 @@
     }
 
     const loadPromise = (async () => {
-      const photos = await detectProjectPhotos(project);
-      applyFastLayoutDefaults(project, photos);
-      project.photos = photos;
+      try {
+        const photos = await detectProjectPhotos(project);
+        applyFastLayoutDefaults(project, photos);
+        project.photos = photos;
+        project.loadError = null;
+      } catch (error) {
+        project.photos = [];
+        project.loadError = error;
+      }
       state.loadedProjects.add(project.id);
     })();
 
@@ -536,7 +601,7 @@
     const url = `images/${folder}/`;
 
     try {
-      const response = await fetch(url);
+      const response = await fetchWithTimeout(url);
       if (!response.ok) {
         return [];
       }
@@ -601,7 +666,7 @@
       `https://api.github.com/repos/${repoInfo.owner}/${repoInfo.repo}` +
       `/git/trees/${encodeURIComponent(repoInfo.branch)}?recursive=1`;
 
-    state.githubImageIndexPromise = fetch(endpoint, {
+    state.githubImageIndexPromise = fetchWithTimeout(endpoint, {
       headers: { Accept: "application/vnd.github+json" }
     })
       .then((response) => {
@@ -677,32 +742,48 @@
     const homeProject = {
       id: "home",
       imageFolder: data?.home?.imageFolder || "home",
-      title: "Home"
+      title: "Portada"
     };
     const homeImage = state.homePhotos[state.homePhotoIndex];
 
     homePreview.innerHTML = "";
+    homePreview.setAttribute("aria-disabled", "true");
 
     if (!homeImage) {
       if (!state.homeLoaded) {
-        homePreview.innerHTML = "<p></p>";
+        homePreview.innerHTML = "<p>Cargando fotografía de portada…</p>";
+        viewStatus.textContent = "Cargando fotografía de portada…";
         return;
       }
       homePreview.innerHTML = isFileProtocol
         ? renderLocalWarningMessage()
-        : '<p>No hay fotos en <code>images/home</code>.</p>';
+        : "<p>No se encontraron fotografías de portada.</p>";
+      viewStatus.textContent = isFileProtocol
+        ? "No se pueden detectar las fotografías en este modo."
+        : "No hay fotografías de portada disponibles.";
       return;
     }
 
+    homePreview.setAttribute("aria-disabled", "false");
+    homePreview.setAttribute(
+      "aria-label",
+      `Cambiar fotografía de portada, ${state.homePhotoIndex + 1} de ${state.homePhotos.length}`
+    );
+    viewStatus.textContent = `Portada. Fotografía ${state.homePhotoIndex + 1} de ${state.homePhotos.length}.`;
+
     const img = document.createElement("img");
-      img.addEventListener("load", () => {
-        img.classList.add("is-ready");
-      }, { once: true });
+    img.addEventListener("load", () => {
+      img.classList.add("is-ready");
+    }, { once: true });
     applyResponsiveSources(img, homeProject, homeImage, {
       variant: "thumb",
-      sizes: "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc(100vw - 32px), 640px"
+      sizes: "(max-width: 640px) calc(100vw - 28px), (max-width: 920px) calc(100vw - 32px), 640px",
+      onError: () => {
+        img.hidden = true;
+        renderImageError(homePreview, "No se pudo cargar la fotografía de portada.");
+      }
     });
-    img.alt = homeImage.alt || "Home";
+    img.alt = homeImage.alt || "Portada";
     if (homeImage.width) {
       img.width = homeImage.width;
     }
@@ -721,12 +802,16 @@
     const project = state.selectedProject;
     projectTitle.textContent = project.title;
     allGrid.hidden = !state.allMode;
+    allBtn.textContent = state.allMode ? "CERRAR" : "TODAS";
+    allBtn.classList.toggle("is-active", state.allMode);
+    allBtn.setAttribute("aria-expanded", String(state.allMode));
     highlightActiveLinks(project.id);
 
     if (!state.loadedProjects.has(project.id)) {
       projectFrame.className = `frame frame-${project.defaultFrame || "center"}`;
-      projectFrame.innerHTML = "<p></p>";
+      projectFrame.innerHTML = "<p>Cargando fotografías…</p>";
       allGrid.innerHTML = "";
+      viewStatus.textContent = `${project.title}. Cargando fotografías…`;
       await ensureProjectPhotosLoaded(project);
       if (state.selectedProject?.id === project.id) {
         renderProject();
@@ -734,13 +819,36 @@
       return;
     }
 
+    if (project.loadError) {
+      projectFrame.className = `frame frame-${project.defaultFrame || "center"}`;
+      projectFrame.innerHTML = "";
+      const message = document.createElement("p");
+      message.className = "image-error";
+      message.textContent = "No se pudieron cargar las fotografías.";
+      const retryButton = document.createElement("button");
+      retryButton.className = "control-btn";
+      retryButton.type = "button";
+      retryButton.textContent = "REINTENTAR";
+      retryButton.addEventListener("click", () => {
+        project.loadError = null;
+        state.loadedProjects.delete(project.id);
+        renderProject();
+      });
+      projectFrame.append(message, retryButton);
+      allGrid.innerHTML = "";
+      viewStatus.textContent = `${project.title}. Error al cargar las fotografías.`;
+      return;
+    }
+
     const photos = project.photos || [];
     if (!photos.length) {
       projectFrame.innerHTML = isFileProtocol
         ? renderLocalWarningMessage()
-        : '<p>Este proyecto no tiene fotos todavia.</p>';
+        : "<p>Este proyecto aún no tiene fotografías.</p>";
       allGrid.innerHTML = "";
       allBtn.classList.remove("is-active");
+      allBtn.setAttribute("aria-expanded", "false");
+      viewStatus.textContent = `${project.title}. No hay fotografías disponibles.`;
       return;
     }
 
@@ -751,14 +859,19 @@
     const currentPhoto = photos[state.selectedPhotoIndex];
     projectFrame.className = `frame frame-${currentPhoto.frame || project.defaultFrame || "center"}`;
     projectFrame.innerHTML = "";
+    viewStatus.textContent = `${project.title}. Fotografía ${state.selectedPhotoIndex + 1} de ${photos.length}.`;
 
     const img = document.createElement("img");
-      img.addEventListener("load", () => {
-        img.classList.add("is-ready");
-      }, { once: true });
+    img.addEventListener("load", () => {
+      img.classList.add("is-ready");
+    }, { once: true });
     applyResponsiveSources(img, project, currentPhoto, {
       variant: "main",
-      sizes: MAIN_IMAGE_SIZES
+      sizes: MAIN_IMAGE_SIZES,
+      onError: () => {
+        img.hidden = true;
+        renderImageError(projectFrame, "No se pudo cargar esta fotografía. Usa ANTERIOR o SIGUIENTE para continuar.");
+      }
     });
     img.alt = currentPhoto.alt || project.title;
     if (currentPhoto.width) {
@@ -774,8 +887,6 @@
     projectFrame.appendChild(img);
 
     renderAllGrid(photos);
-    allBtn.textContent = state.allMode ? "CLOSE" : "ALL";
-    allBtn.classList.toggle("is-active", state.allMode);
   }
 
   function renderAllGrid(photos) {
@@ -831,6 +942,13 @@
         const photo = photos[index];
         const fig = document.createElement("figure");
         fig.className = `grid-card ${photo.grid || ""}`.trim();
+        const thumbButton = document.createElement("button");
+        thumbButton.className = "grid-card-button";
+        thumbButton.type = "button";
+        thumbButton.setAttribute(
+          "aria-label",
+          `Ver ${state.selectedProject?.title || "proyecto"}, fotografía ${index + 1}`
+        );
 
         const img = document.createElement("img");
         img.classList.add("grid-img-pending");
@@ -841,12 +959,16 @@
           applyResponsiveSources(img, state.selectedProject, photo, {
             variant: "thumb",
             sizes: getGridSizes(photo),
-            clearSrcSetOnError: true
+            clearSrcSetOnError: true,
+            onError: () => {
+              img.hidden = true;
+              renderImageError(fig, "No se pudo cargar esta fotografía.");
+            }
           });
           img.classList.remove("grid-img-pending");
           img.__lazyLoad = null;
         };
-        img.alt = photo.alt || `Photo ${index + 1}`;
+        img.alt = photo.alt || `Fotografía ${index + 1}`;
         if (photo.width) {
           img.width = photo.width;
         }
@@ -859,13 +981,15 @@
         } else {
           img.__lazyLoad();
         }
-        img.addEventListener("click", () => {
+        thumbButton.addEventListener("click", () => {
           state.selectedPhotoIndex = index;
           state.allMode = false;
           renderProject();
+          requestAnimationFrame(() => projectTitle.focus({ preventScroll: true }));
         });
 
-        fig.appendChild(img);
+        thumbButton.appendChild(img);
+        fig.appendChild(thumbButton);
         fragment.appendChild(fig);
       }
 
@@ -880,32 +1004,57 @@
     requestAnimationFrame(renderBatch);
   }
 
-  function showView(viewName) {
+  function showView(viewName, options = {}) {
     homeView.classList.remove("is-active");
     projectView.classList.remove("is-active");
     contactView.classList.remove("is-active");
 
-    document.querySelectorAll(".menu-link").forEach((el) => el.classList.remove("is-active"));
+    document.querySelectorAll(".menu-link").forEach((el) => {
+      el.classList.remove("is-active");
+      el.removeAttribute("aria-current");
+    });
+
+    let heading = null;
 
     if (viewName === "project") {
       projectView.classList.add("is-active");
+      heading = projectTitle;
       renderProject();
-      return;
-    }
-
-    if (viewName === "contact") {
+    } else if (viewName === "contact") {
       contactView.classList.add("is-active");
-      document.querySelector("[data-action='contact']")?.classList.add("is-active");
-      return;
+      heading = document.getElementById("contact-title");
+      const contactLink = document.querySelector("[data-action='contact']");
+      contactLink?.classList.add("is-active");
+      contactLink?.setAttribute("aria-current", "page");
+      viewStatus.textContent = "Contacto.";
+    } else {
+      homeView.classList.add("is-active");
+      heading = document.getElementById("home-title");
+      document.querySelectorAll("[data-action='home']").forEach((el) => {
+        el.classList.add("is-active");
+        el.setAttribute("aria-current", "page");
+      });
+      viewStatus.textContent = state.homePhotos.length
+        ? `Portada. Fotografía ${state.homePhotoIndex + 1} de ${state.homePhotos.length}.`
+        : state.homeLoaded
+          ? "No hay fotografías de portada disponibles."
+          : "Cargando fotografía de portada…";
     }
 
-    homeView.classList.add("is-active");
-    document.querySelectorAll("[data-action='home']").forEach((el) => el.classList.add("is-active"));
+    if (options.focus && heading) {
+      requestAnimationFrame(() => heading.focus({ preventScroll: true }));
+    }
   }
 
   function highlightActiveLinks(projectId) {
     document.querySelectorAll("[data-project-id]").forEach((el) => {
-      el.classList.toggle("is-active", el.dataset.projectId === projectId);
+      const isActive = el.dataset.projectId === projectId;
+      el.classList.toggle("is-active", isActive);
+      if (isActive) {
+        el.setAttribute("aria-current", "page");
+      } else {
+        el.removeAttribute("aria-current");
+      }
     });
   }
 
@@ -963,6 +1112,8 @@
       tag === "INPUT" ||
       tag === "TEXTAREA" ||
       tag === "SELECT" ||
+      tag === "BUTTON" ||
+      tag === "A" ||
       active.isContentEditable
     );
   }
@@ -982,9 +1133,19 @@
 
   function renderLocalWarningMessage() {
     return [
-      "<p>No se pueden detectar fotos al abrir este archivo directamente.</p>",
-      "<p>Inicia un servidor local con <code>python3 -m http.server 4173</code> y abre <code>http://localhost:4173/</code>.</p>"
+      "<p>No se pueden detectar fotografías al abrir este archivo directamente.</p>",
+      "<p>Para cargar la galería, abre el sitio desde un servidor local, por ejemplo: <code>python3 -m http.server 4173</code>.</p>"
     ].join("");
+  }
+
+  function renderImageError(container, message) {
+    if (container.querySelector(".image-error")) {
+      return;
+    }
+    const error = document.createElement("p");
+    error.className = "image-error";
+    error.textContent = message;
+    container.appendChild(error);
   }
 
   function resolvePhotoSrc(project, photo) {
@@ -1021,6 +1182,8 @@ function setImageSource(img, project, photo, variant = "main", options = {}) {
       return;
     }
     img.onerror = null;
+    img.classList.add("is-error");
+    options.onError?.(img);
   };
 
   img.src = candidates[index].src;

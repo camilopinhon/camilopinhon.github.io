@@ -751,7 +751,6 @@
 
     if (!homeImage) {
       if (!state.homeLoaded) {
-        homePreview.innerHTML = "<p>Cargando fotografía de portada…</p>";
         viewStatus.textContent = "Cargando fotografía de portada…";
         return;
       }
@@ -809,7 +808,7 @@
 
     if (!state.loadedProjects.has(project.id)) {
       projectFrame.className = `frame frame-${project.defaultFrame || "center"}`;
-      projectFrame.innerHTML = "<p>Cargando fotografías…</p>";
+      projectFrame.innerHTML = "";
       allGrid.innerHTML = "";
       viewStatus.textContent = `${project.title}. Cargando fotografías…`;
       await ensureProjectPhotosLoaded(project);

@@ -393,23 +393,6 @@ body {
     opacity: 1;
   }
 
-  #home-preview,
-  #project-frame {
-    position: relative;
-  }
-
-  #home-preview:has(img:not(.is-ready):not(.is-error))::after,
-  #project-frame:has(img:not(.is-ready):not(.is-error))::after {
-    content: "Cargando fotografía…";
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    color: var(--muted);
-    font-size: 14px;
-    pointer-events: none;
-  }
-
   .all-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
